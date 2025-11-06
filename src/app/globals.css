@@ -24,3 +24,34 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* Button cycle animations */
+@keyframes button-cycle-rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes button-cycle-rotate-reverse {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+.button-cycle {
+  pointer-events: none;
+}
+
+.button-cycle-first {
+  animation: button-cycle-rotate 8s linear infinite;
+}
+
+.button-cycle-second {
+  animation: button-cycle-rotate-reverse 10s linear infinite;
+}
