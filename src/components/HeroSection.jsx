@@ -109,152 +109,152 @@ const HeroSection = () => {
   const mockProducts = [
     {
       id: 1,
-      url: "/images/Generated Image November 08, 2025 - 10_45PM.png",
+      url: "/images/Generated Image November 08, 2025 - 10_45PM_nobg.png",
       route: "/product/1",
     },
     {
       id: 2,
-      url: "/images/Generated Image November 08, 2025 - 8_36PM.png",
+      url: "/images/Generated Image November 08, 2025 - 8_36PM_nobg.png",
       route: "/product/2",
     },
     {
       id: 3,
-      url: "/images/Generated Image November 08, 2025 - 8_42PM.png",
+      url: "/images/Generated Image November 08, 2025 - 8_42PM_nobg.png",
       route: "/product/3",
     },
     {
       id: 4,
-      url: "/images/Generated Image November 08, 2025 - 8_45PM.png",
+      url: "/images/Generated Image November 08, 2025 - 8_45PM_nobg.png",
       route: "/product/4",
     },
     {
       id: 5,
-      url: "/images/Generated Image November 08, 2025 - 8_49PM.png",
+      url: "/images/Generated Image November 08, 2025 - 8_49PM_nobg.png",
       route: "/product/5",
     },
     {
       id: 6,
-      url: "/images/Generated Image November 08, 2025 - 8_54PM.png",
+      url: "/images/Generated Image November 08, 2025 - 8_54PM_nobg.png",
       route: "/product/6",
     },
     {
       id: 7,
-      url: "/images/Generated Image November 08, 2025 - 8_56PM.png",
+      url: "/images/Generated Image November 08, 2025 - 8_56PM_nobg.png",
       route: "/product/7",
     },
     {
       id: 8,
-      url: "/images/Generated Image November 08, 2025 - 8_58PM.png",
+      url: "/images/Generated Image November 08, 2025 - 8_58PM_nobg.png",
       route: "/product/8",
     },
     {
       id: 9,
-      url: "/images/Generated Image November 08, 2025 - 9_08PM.png",
+      url: "/images/Generated Image November 08, 2025 - 9_08PM_nobg.png",
       route: "/product/9",
     },
     {
       id: 10,
-      url: "/images/Generated Image November 08, 2025 - 9_09PM (1).png",
+      url: "/images/Generated Image November 08, 2025 - 9_09PM (1)_nobg.png",
       route: "/product/10",
     },
     {
       id: 11,
-      url: "/images/Generated Image November 08, 2025 - 9_09PM.png",
+      url: "/images/Generated Image November 08, 2025 - 9_09PM_nobg.png",
       route: "/product/11",
     },
     {
       id: 12,
-      url: "/images/Generated Image November 08, 2025 - 9_10PM.png",
+      url: "/images/Generated Image November 08, 2025 - 9_10PM_nobg.png",
       route: "/product/12",
     },
     {
       id: 13,
-      url: "/images/Generated Image November 08, 2025 - 9_12PM.png",
+      url: "/images/Generated Image November 08, 2025 - 9_12PM_nobg.png",
       route: "/product/13",
     },
     {
       id: 14,
-      url: "/images/Generated Image November 08, 2025 - 9_15PM.png",
+      url: "/images/Generated Image November 08, 2025 - 9_15PM_nobg.png",
       route: "/product/14",
     },
     {
       id: 15,
-      url: "/images/Generated Image November 08, 2025 - 9_18PM.png",
+      url: "/images/Generated Image November 08, 2025 - 9_18PM_nobg.png",
       route: "/product/15",
     },
     {
       id: 16,
-      url: "/images/Generated Image November 08, 2025 - 10_45PM.png",
+      url: "/images/Generated Image November 08, 2025 - 10_45PM_nobg.png",
       route: "/product/16",
     },
     {
       id: 17,
-      url: "/images/Generated Image November 08, 2025 - 8_36PM.png",
+      url: "/images/Generated Image November 08, 2025 - 8_36PM_nobg.png",
       route: "/product/17",
     },
     {
       id: 18,
-      url: "/images/Generated Image November 08, 2025 - 8_42PM.png",
+      url: "/images/Generated Image November 08, 2025 - 8_42PM_nobg.png",
       route: "/product/18",
     },
     {
       id: 19,
-      url: "/images/Generated Image November 08, 2025 - 8_45PM.png",
+      url: "/images/Generated Image November 08, 2025 - 8_45PM_nobg.png",
       route: "/product/19",
     },
     {
       id: 20,
-      url: "/images/Generated Image November 08, 2025 - 8_49PM.png",
+      url: "/images/Generated Image November 08, 2025 - 8_49PM_nobg.png",
       route: "/product/20",
     },
     {
       id: 21,
-      url: "/images/Generated Image November 08, 2025 - 8_54PM.png",
+      url: "/images/Generated Image November 08, 2025 - 8_54PM_nobg.png",
       route: "/product/21",
     },
     {
       id: 22,
-      url: "/images/Generated Image November 08, 2025 - 8_56PM.png",
+      url: "/images/Generated Image November 08, 2025 - 8_56PM_nobg.png",
       route: "/product/22",
     },
     {
       id: 23,
-      url: "/images/Generated Image November 08, 2025 - 8_58PM.png",
+      url: "/images/Generated Image November 08, 2025 - 8_58PM_nobg.png",
       route: "/product/23",
     },
     {
       id: 24,
-      url: "/images/Generated Image November 08, 2025 - 9_08PM.png",
+      url: "/images/Generated Image November 08, 2025 - 9_08PM_nobg.png",
       route: "/product/24",
     },
     {
       id: 25,
-      url: "/images/Generated Image November 08, 2025 - 9_09PM (1).png",
+      url: "/images/Generated Image November 08, 2025 - 9_09PM (1)_nobg.png",
       route: "/product/25",
     },
     {
       id: 26,
-      url: "/images/Generated Image November 08, 2025 - 9_09PM.png",
+      url: "/images/Generated Image November 08, 2025 - 9_09PM_nobg.png",
       route: "/product/26",
     },
     {
       id: 27,
-      url: "/images/Generated Image November 08, 2025 - 9_10PM.png",
+      url: "/images/Generated Image November 08, 2025 - 9_10PM_nobg.png",
       route: "/product/27",
     },
     {
       id: 28,
-      url: "/images/Generated Image November 08, 2025 - 9_12PM.png",
+      url: "/images/Generated Image November 08, 2025 - 9_12PM_nobg.png",
       route: "/product/28",
     },
     {
       id: 29,
-      url: "/images/Generated Image November 08, 2025 - 9_15PM.png",
+      url: "/images/Generated Image November 08, 2025 - 9_15PM_nobg.png",
       route: "/product/29",
     },
     {
       id: 30,
-      url: "/images/Generated Image November 08, 2025 - 9_18PM.png",
+      url: "/images/Generated Image November 08, 2025 - 9_18PM_nobg.png",
       route: "/product/30",
     },
   ];
@@ -277,7 +277,7 @@ const HeroSection = () => {
       let attempts = 0;
 
       while (!placed && attempts < maxAttempts) {
-        const size = Math.random() * 70 + 45; // 45-115px
+        const size = Math.random() * 100 + 80; // 80-180px
         const halfSize = size / 2;
         const x = Math.random() * 92 + 4; // 4-96%
         const y = Math.random() * 88 + 6; // 6-94%
@@ -380,13 +380,30 @@ const HeroSection = () => {
   };
 
   return (
-    <div
-      ref={containerRef}
-      className="relative w-full h-screen overflow-hidden bg-red-800"
-      onMouseMove={(e) => handleMouseMove(e, null)}
-      onMouseLeave={handleMouseLeave}
-    >
-      {/* Floating Product Images */}
+    <>
+      <style>{`
+        @keyframes float {
+          0%, 100% {
+            transform: translateY(0px) rotate(0deg);
+          }
+          25% {
+            transform: translateY(-10px) rotate(1deg);
+          }
+          50% {
+            transform: translateY(-5px) rotate(0deg);
+          }
+          75% {
+            transform: translateY(-15px) rotate(-1deg);
+          }
+        }
+      `}</style>
+      <div
+        ref={containerRef}
+        className="relative w-full h-screen overflow-hidden bg-red-800"
+        onMouseMove={(e) => handleMouseMove(e, null)}
+        onMouseLeave={handleMouseLeave}
+      >
+        {/* Floating Product Images */}
       {images.map((img, index) => {
         const parallaxOffset = scrollY * img.depth * 0.5;
         const scale = hoveredIndex
@@ -411,12 +428,14 @@ const HeroSection = () => {
               style={{
                 width: `${img.size}px`,
                 height: `${img.size}px`,
+                animation: `float ${3 + (img.id % 3)}s ease-in-out infinite`,
+                animationDelay: `${(img.id * 0.1) % 2}s`,
               }}
             >
               <img
                 src={img.url}
                 alt={`Product ${img.id}`}
-                className="w-full h-full object-cover"
+                className="w-full h-full"
                 style={{
                   opacity: 0.85 + (img.z / 400) * 0.15,
                 }}
@@ -427,7 +446,7 @@ const HeroSection = () => {
       })}
 
       {/* Hero Text Content */}
-      <div className="absolute inset-0 flex flex-col items-center justify-center z-100 pointer-events-none">
+      <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none" style={{ zIndex: 1000 }}>
         <h1 className="text-6xl md:text-8xl font-bold text-white mb-6 text-center tracking-tight">
           Custom Figurines
         </h1>
@@ -442,6 +461,7 @@ const HeroSection = () => {
       {/* Gradient Overlay */}
       <div className="absolute inset-0  pointer-events-none" />
     </div>
+    </>
   );
 };
 
