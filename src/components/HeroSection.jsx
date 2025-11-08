@@ -352,7 +352,7 @@ const HeroSection = () => {
 
     const maxDistance = 30;
     if (distance < maxDistance) {
-      const scale = 1 + (1 - distance / maxDistance) * 0.3;
+      const scale = 1 + (1 - distance / maxDistance) * 0.8;
       return scale;
     }
 
@@ -406,9 +406,14 @@ const HeroSection = () => {
         {/* Floating Product Images */}
       {images.map((img, index) => {
         const parallaxOffset = scrollY * img.depth * 0.5;
-        const scale = hoveredIndex
+        let scale = hoveredIndex
           ? getProximityScale(index, hoveredIndex.mouseX, hoveredIndex.mouseY)
           : 1;
+        
+        // Add extra scale boost when directly hovering over this image
+        if (hoveredIndex && hoveredIndex.index === index) {
+          scale = scale * 1.5;
+        }
 
         return (
           <div
