@@ -26,23 +26,23 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`fixed top-4 left-1/2 -translate-x-1/2 z-50 transition-all duration-300 ease-in-out ${
+      className={`fixed top-4 left-1/2 -translate-x-1/2 z-[999] transition-all duration-300 ease-in-out ${
         isVisible
           ? "opacity-100 translate-y-0"
           : "opacity-0 -translate-y-full pointer-events-none"
-      }`}
+      } w-[80%] max-w-screen-md`}
     >
-      <div className="bg-white/80 backdrop-blur-md rounded-full px-6 py-3 shadow-lg border border-white/20">
-        <div className="flex items-center gap-8">
+      <div className="bg-white/80 backdrop-blur-md rounded-md px-6 py-3 shadow-lg border border-white/20">
+        <div className="relative flex items-center justify-between w-full">
           {/* Logo */}
           <div className="flex items-center">
-            <div className="w-8 h-8 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full flex items-center justify-center text-white font-bold text-sm">
+            <div className="w-8 h-8 bg-gradient-to-br from-red-500 to-blue-500 rounded-full flex items-center justify-center text-white font-bold text-sm">
               N
             </div>
           </div>
 
-          {/* Navigation Links */}
-          <div className="flex items-center gap-6">
+          {/* Navigation Links - Centered */}
+          <div className="absolute left-1/2 -translate-x-1/2 flex items-center gap-6">
             <a
               href="#shop"
               className="text-gray-700 hover:text-purple-600 transition-colors duration-200 font-medium"
@@ -68,6 +68,11 @@ const Navbar = () => {
               Contact
             </a>
           </div>
+
+          {/* User Avatar */}
+          <div className="w-8 h-8 bg-gray-300 rounded-full flex items-center justify-center text-gray-700 font-bold text-sm">
+            U
+          </div>
         </div>
       </div>
     </nav>
@@ -75,4 +80,3 @@ const Navbar = () => {
 };
 
 export default Navbar;
-
