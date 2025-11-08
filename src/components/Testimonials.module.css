@@ -1,0 +1,24 @@
+/*
+ * Testimonials.module.css
+ * This file contains the styles for the Testimonials component.
+ */
+
+@keyframes infinite-scroll-normal {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* Apply the animations to container classes */
+.scrollerNormal {
+  /* Adjust the duration to control the speed */
+  animation: infinite-scroll-normal 80s linear infinite;
+}
+
+.scrollerReverse {
+  /* Adjust the duration to control the speed */
+  animation: infinite-scroll-normal 80s linear infinite reverse;
+}
