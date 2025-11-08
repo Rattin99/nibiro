@@ -1,5 +1,6 @@
 "use client";
 import React, { useState, useEffect, useRef } from "react";
+import { useRouter } from "next/navigation";
 
 // Quadtree implementation for efficient spatial queries
 class QuadTree {
@@ -98,6 +99,7 @@ class QuadTree {
 }
 
 const HeroSection = () => {
+  const router = useRouter();
   const [images, setImages] = useState([]);
   const [hoveredIndex, setHoveredIndex] = useState(null);
   const [scrollY, setScrollY] = useState(0);
@@ -107,167 +109,155 @@ const HeroSection = () => {
   const mockProducts = [
     {
       id: 1,
-      url: "https://images.unsplash.com/photo-1634986666676-ec8fd927c23d?w=400",
+      url: "/images/Generated Image November 08, 2025 - 10_45PM.png",
       route: "/product/1",
     },
     {
       id: 2,
-      url: "https://images.unsplash.com/photo-1610701596007-11502861dcfa?w=400",
+      url: "/images/Generated Image November 08, 2025 - 8_36PM.png",
       route: "/product/2",
     },
     {
       id: 3,
-      url: "https://images.unsplash.com/photo-1608889175250-c3b0c1667d3a?w=400",
+      url: "/images/Generated Image November 08, 2025 - 8_42PM.png",
       route: "/product/3",
     },
     {
       id: 4,
-      url: "https://images.unsplash.com/photo-1635322966219-b75ed372eb01?w=400",
+      url: "/images/Generated Image November 08, 2025 - 8_45PM.png",
       route: "/product/4",
     },
     {
       id: 5,
-      url: "https://images.unsplash.com/photo-1614624532983-4ce03382d63d?w=400",
+      url: "/images/Generated Image November 08, 2025 - 8_49PM.png",
       route: "/product/5",
     },
     {
       id: 6,
-      url: "https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?w=400",
+      url: "/images/Generated Image November 08, 2025 - 8_54PM.png",
       route: "/product/6",
     },
     {
       id: 7,
-      url: "https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?w=400",
+      url: "/images/Generated Image November 08, 2025 - 8_56PM.png",
       route: "/product/7",
     },
     {
       id: 8,
-      url: "https://images.unsplash.com/photo-1582053433344-00b9644c6e28?w=400",
+      url: "/images/Generated Image November 08, 2025 - 8_58PM.png",
       route: "/product/8",
     },
     {
       id: 9,
-      url: "https://images.unsplash.com/photo-1578632292335-df3abbb0d586?w=400",
+      url: "/images/Generated Image November 08, 2025 - 9_08PM.png",
       route: "/product/9",
     },
     {
       id: 10,
-      url: "https://images.unsplash.com/photo-1611361287163-86b5e7c98f4b?w=400",
+      url: "/images/Generated Image November 08, 2025 - 9_09PM (1).png",
       route: "/product/10",
     },
     {
       id: 11,
-      url: "https://images.unsplash.com/photo-1580870069867-74c57ee1bb07?w=400",
+      url: "/images/Generated Image November 08, 2025 - 9_09PM.png",
       route: "/product/11",
     },
     {
       id: 12,
-      url: "https://images.unsplash.com/photo-1590736969955-71cc94901144?w=400",
+      url: "/images/Generated Image November 08, 2025 - 9_10PM.png",
       route: "/product/12",
     },
     {
       id: 13,
-      url: "https://images.unsplash.com/photo-1607083206869-4c7672e72a8a?w=400",
+      url: "/images/Generated Image November 08, 2025 - 9_12PM.png",
       route: "/product/13",
     },
     {
       id: 14,
-      url: "https://images.unsplash.com/photo-1611096265229-4f4e2b2e2e0a?w=400",
+      url: "/images/Generated Image November 08, 2025 - 9_15PM.png",
       route: "/product/14",
     },
     {
       id: 15,
-      url: "https://images.unsplash.com/photo-1585366119957-e9730b6d0f60?w=400",
+      url: "/images/Generated Image November 08, 2025 - 9_18PM.png",
       route: "/product/15",
     },
     {
       id: 16,
-      url: "https://images.unsplash.com/photo-1595435934249-5df7ed86e1c0?w=400",
+      url: "/images/Generated Image November 08, 2025 - 10_45PM.png",
       route: "/product/16",
     },
     {
       id: 17,
-      url: "https://images.unsplash.com/photo-1587732608058-5ccfedd3ea63?w=400",
+      url: "/images/Generated Image November 08, 2025 - 8_36PM.png",
       route: "/product/17",
     },
     {
       id: 18,
-      url: "https://images.unsplash.com/photo-1585366119957-e9730b6d0f60?w=400",
+      url: "/images/Generated Image November 08, 2025 - 8_42PM.png",
       route: "/product/18",
     },
     {
       id: 19,
-      url: "https://images.unsplash.com/photo-1609081219090-a6d81d3085bf?w=400",
+      url: "/images/Generated Image November 08, 2025 - 8_45PM.png",
       route: "/product/19",
     },
     {
       id: 20,
-      url: "https://images.unsplash.com/photo-1615220368629-82c8e9c1468e?w=400",
+      url: "/images/Generated Image November 08, 2025 - 8_49PM.png",
       route: "/product/20",
     },
     {
       id: 21,
-      url: "https://images.unsplash.com/photo-1634986666676-ec8fd927c23d?w=400",
+      url: "/images/Generated Image November 08, 2025 - 8_54PM.png",
       route: "/product/21",
     },
     {
       id: 22,
-      url: "https://images.unsplash.com/photo-1610701596007-11502861dcfa?w=400",
+      url: "/images/Generated Image November 08, 2025 - 8_56PM.png",
       route: "/product/22",
     },
     {
       id: 23,
-      url: "https://images.unsplash.com/photo-1608889175250-c3b0c1667d3a?w=400",
+      url: "/images/Generated Image November 08, 2025 - 8_58PM.png",
       route: "/product/23",
     },
     {
       id: 24,
-      url: "https://images.unsplash.com/photo-1635322966219-b75ed372eb01?w=400",
+      url: "/images/Generated Image November 08, 2025 - 9_08PM.png",
       route: "/product/24",
     },
     {
       id: 25,
-      url: "https://images.unsplash.com/photo-1614624532983-4ce03382d63d?w=400",
+      url: "/images/Generated Image November 08, 2025 - 9_09PM (1).png",
       route: "/product/25",
     },
     {
       id: 26,
-      url: "https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?w=400",
+      url: "/images/Generated Image November 08, 2025 - 9_09PM.png",
       route: "/product/26",
     },
     {
       id: 27,
-      url: "https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?w=400",
+      url: "/images/Generated Image November 08, 2025 - 9_10PM.png",
       route: "/product/27",
     },
     {
       id: 28,
-      url: "https://images.unsplash.com/photo-1582053433344-00b9644c6e28?w=400",
+      url: "/images/Generated Image November 08, 2025 - 9_12PM.png",
       route: "/product/28",
     },
     {
       id: 29,
-      url: "https://images.unsplash.com/photo-1578632292335-df3abbb0d586?w=400",
+      url: "/images/Generated Image November 08, 2025 - 9_15PM.png",
       route: "/product/29",
     },
     {
       id: 30,
-      url: "https://images.unsplash.com/photo-1611361287163-86b5e7c98f4b?w=400",
+      url: "/images/Generated Image November 08, 2025 - 9_18PM.png",
       route: "/product/30",
     },
   ];
-
-  useEffect(() => {
-    const positionedImages = generateImagePositions(mockProducts);
-    setImages(positionedImages);
-
-    const handleScroll = () => {
-      setScrollY(window.scrollY);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
   const generateImagePositions = (products) => {
     const positions = [];
@@ -337,6 +327,18 @@ const HeroSection = () => {
     return positions;
   };
 
+  useEffect(() => {
+    const positionedImages = generateImagePositions(mockProducts);
+    setImages(positionedImages);
+
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   const getProximityScale = (index, mouseX, mouseY) => {
     if (hoveredIndex === null) return 1;
 
@@ -374,29 +376,16 @@ const HeroSection = () => {
   const handleImageClick = (route) => {
     // In your Next.js app, replace this with: router.push(route)
     console.log("Navigate to:", route);
-    window.location.href = route;
+    router.push(route);
   };
 
   return (
     <div
       ref={containerRef}
-      className="relative w-full h-screen overflow-hidden bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900"
+      className="relative w-full h-screen overflow-hidden bg-red-800"
       onMouseMove={(e) => handleMouseMove(e, null)}
       onMouseLeave={handleMouseLeave}
     >
-      {/* Hero Text Content */}
-      <div className="absolute inset-0 flex flex-col items-center justify-center z-10 pointer-events-none">
-        <h1 className="text-6xl md:text-8xl font-bold text-white mb-6 text-center tracking-tight">
-          Custom Figurines
-        </h1>
-        <p className="text-xl md:text-2xl text-gray-300 text-center max-w-2xl px-4">
-          Transform your memories into stunning 3D printed masterpieces
-        </p>
-        <button className="mt-8 px-8 py-4 bg-white text-purple-900 rounded-full font-semibold text-lg hover:bg-purple-100 transition-colors pointer-events-auto">
-          Start Creating
-        </button>
-      </div>
-
       {/* Floating Product Images */}
       {images.map((img, index) => {
         const parallaxOffset = scrollY * img.depth * 0.5;
@@ -418,7 +407,7 @@ const HeroSection = () => {
             onMouseEnter={(e) => handleMouseMove(e, index)}
           >
             <div
-              className="rounded-2xl overflow-hidden shadow-2xl hover:shadow-purple-500/50 transition-shadow duration-300"
+              className="transition-shadow duration-300"
               style={{
                 width: `${img.size}px`,
                 height: `${img.size}px`,
@@ -437,8 +426,21 @@ const HeroSection = () => {
         );
       })}
 
+      {/* Hero Text Content */}
+      <div className="absolute inset-0 flex flex-col items-center justify-center z-100 pointer-events-none">
+        <h1 className="text-6xl md:text-8xl font-bold text-white mb-6 text-center tracking-tight">
+          Custom Figurines
+        </h1>
+        <p className="text-xl md:text-2xl text-gray-300 text-center max-w-2xl px-4">
+          Transform your memories into stunning 3D printed masterpieces
+        </p>
+        <button className="mt-8 px-8 py-4 bg-white text-purple-900 rounded-full font-semibold text-lg hover:bg-purple-100 transition-colors pointer-events-auto">
+          Start Creating
+        </button>
+      </div>
+
       {/* Gradient Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-slate-900/80 pointer-events-none" />
+      <div className="absolute inset-0  pointer-events-none" />
     </div>
   );
 };
