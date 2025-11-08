@@ -4,13 +4,13 @@ import "./InsiderSection.css";
 
 const InsiderSection = () => {
   const [mutedStates, setMutedStates] = useState([true, true, true]);
-  const videoRefs = [useRef(null), useRef(null), useRef(null)];
+  const videoRefs = useRef([]);
 
   useEffect(() => {
     // Ensure videos play on mount
-    videoRefs.forEach((videoRef) => {
-      if (videoRef.current) {
-        videoRef.current.play().catch((error) => {
+    videoRefs.current.forEach((video) => {
+      if (video) {
+        video.play().catch((error) => {
           console.log("Autoplay prevented:", error);
         });
       }
@@ -21,10 +21,6 @@ const InsiderSection = () => {
     const newMutedStates = [...mutedStates];
     newMutedStates[index] = !newMutedStates[index];
     setMutedStates(newMutedStates);
-
-    if (videoRefs[index].current) {
-      videoRefs[index].current.muted = newMutedStates[index];
-    }
   };
 
   const videos = [
@@ -99,7 +95,7 @@ const InsiderSection = () => {
                   <div className={video.className}>
                     <div className="testimonial-media">
                       <video
-                        ref={videoRefs[index]}
+                        ref={(el) => (videoRefs.current[index] = el)}
                         playsInline
                         loop
                         muted={mutedStates[index]}
@@ -141,87 +137,6 @@ const InsiderSection = () => {
                 real green tea powder, premium protein, and glucomannan.
                 Irresistibly delicious. Heavenly creamy.
               </p>
-
-              <div className="insider-cta">
-                <a
-                  href="https://morenutrition.co.uk/products/more-protein-iced-matcha-latte"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="button"
-                >
-                  <div className="button-cycle is-first">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 10 10"
-                      width="100%"
-                      className="button-arrow"
-                    >
-                      <path
-                        fill="currentColor"
-                        fillRule="evenodd"
-                        d="M0 1.827 1.71 0H10v8.22L8.11 10V5.93c0-.992.009-1.89.03-2.695l-6.642 6.58-1.316-1.44 6.641-6.58c-.787.022-1.67.032-2.647.032H0Z"
-                        clipRule="evenodd"
-                      />
-                    </svg>
-                    <div className="button-cycle-bg"></div>
-                  </div>
-                  <div className="button-bg">
-                    <div className="button-text">Buy now</div>
-                  </div>
-                  <div className="button-cycle is-second">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 10 10"
-                      width="100%"
-                      className="button-arrow"
-                    >
-                      <path
-                        fill="currentColor"
-                        fillRule="evenodd"
-                        d="M0 1.827 1.71 0H10v8.22L8.11 10V5.93c0-.992.009-1.89.03-2.695l-6.642 6.58-1.316-1.44 6.641-6.58c-.787.022-1.67.032-2.647.032H0Z"
-                        clipRule="evenodd"
-                      />
-                    </svg>
-                    <div className="button-cycle-bg"></div>
-                  </div>
-                </a>
-
-                <div className="rating-inner">
-                  <a
-                    href="https://morenutrition.co.uk/products/more-protein-iced-matcha-latte"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="rating-link"
-                  >
-                    <div className="rating-star-wrap">
-                      {[1, 2, 3, 4].map((star) => (
-                        <img
-                          key={star}
-                          src="./More Nutrition - Matcha meets Protein_files/68ae178a6c618dbc4bb25c48_icon-star.svg"
-                          loading="lazy"
-                          width="20"
-                          height="20"
-                          alt="icon-star"
-                          className="rating-star"
-                        />
-                      ))}
-                      <img
-                        src="./More Nutrition - Matcha meets Protein_files/68ae178a30a512b269607fbe_icon-star-half.svg"
-                        loading="lazy"
-                        width="20"
-                        height="20"
-                        alt="icon-star"
-                        className="rating-star"
-                      />
-                    </div>
-                    <div className="rating-text-wrap">
-                      <div className="rating-text">3158 Reviews</div>
-                    </div>
-                  </a>
-                </div>
-              </div>
             </div>
           </div>
         </div>
