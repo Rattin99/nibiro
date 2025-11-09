@@ -156,7 +156,7 @@ const Footer = () => {
         <pre
           id="fire"
           ref={fireRef}
-          className="font-mono whitespace-pre leading-none text-[8px] sm:text-[9px] md:text-[10px]"
+          className="font-mono whitespace-pre leading-none text-[16px] sm:text-[18px] md:text-[20px]"
         >
           Loading...
         </pre>
