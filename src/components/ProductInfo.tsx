@@ -26,8 +26,8 @@ const ProductInfo: React.FC<ProductInfoProps> = ({
   features = [],
 }) => {
   return (
-    <div className="w-full h-full flex flex-col justify-center p-8 md:p-12 lg:p-16 bg-white">
-      <div className="max-w-2xl">
+    <div className="w-full h-full flex flex-col justify-start lg:justify-center p-6 sm:p-8 md:p-12 lg:p-16 bg-white">
+      <div className="max-w-2xl w-full">
         {/* Subtitle */}
         <p className="text-sm md:text-base text-gray-600 mb-2 uppercase tracking-wide">
           {subtitle}

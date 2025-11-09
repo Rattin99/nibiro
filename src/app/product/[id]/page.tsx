@@ -10,7 +10,7 @@ import ProductInfo from "@/components/ProductInfo";
 // Dynamically import Product3DViewer with SSR disabled
 const Product3DViewer = dynamic(
   () => import("@/components/Product3DViewer.client"),
-  { 
+  {
     ssr: false,
     loading: () => (
       <div className="w-full h-full bg-gray-900 flex items-center justify-center">
@@ -19,8 +19,8 @@ const Product3DViewer = dynamic(
           <p className="text-white text-lg">Loading 3D Viewer...</p>
         </div>
       </div>
-    )
-  }
+    ),
+  },
 );
 
 interface Product {
@@ -53,11 +53,11 @@ export default function ProductPage() {
         setLoading(true);
         setError(null);
         const response = await fetch(`/api/products/${productId}`);
-        
+
         if (!response.ok) {
           throw new Error("Failed to fetch product");
         }
-        
+
         const data = await response.json();
         setProduct(data);
       } catch (err) {
@@ -106,15 +106,15 @@ export default function ProductPage() {
     <>
       <Navbar />
       <div className="min-h-screen bg-white">
-        {/* Product Layout: 3D Viewer on Left, Info on Right */}
-        <div className="flex flex-col lg:flex-row h-screen">
-          {/* 3D Viewer - Left Side */}
-          <div className="w-full lg:w-1/2 h-[50vh] lg:h-screen relative">
+        {/* Product Layout: Responsive - Mobile: Model top, Info bottom | Desktop: Side by side */}
+        <div className="flex flex-col lg:flex-row min-h-screen lg:h-screen">
+          {/* 3D Viewer - Top on Mobile, Left on Desktop */}
+          <div className="w-full lg:w-1/2 h-[50vh] sm:h-[55vh] lg:h-screen relative order-1 lg:order-1">
             <Product3DViewer modelPath={product.modelPath} />
           </div>
 
-          {/* Product Info - Right Side */}
-          <div className="w-full lg:w-1/2 h-[50vh] lg:h-screen overflow-y-auto">
+          {/* Product Info - Bottom on Mobile, Right on Desktop */}
+          <div className="w-full lg:w-1/2 flex-1 lg:h-screen overflow-y-auto order-2 lg:order-2">
             <ProductInfo
               title={product.title}
               subtitle={product.subtitle}
@@ -126,8 +126,6 @@ export default function ProductPage() {
           </div>
         </div>
       </div>
-      <Footer />
     </>
   );
 }
-
