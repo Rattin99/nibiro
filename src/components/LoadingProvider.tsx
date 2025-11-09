@@ -64,7 +64,7 @@ export const LoadingProvider: React.FC<LoadingProviderProps> = ({ children }) =>
   useEffect(() => {
     if (isInitialLoad && !hasStartedPreloadRef.current) {
       console.log("[LoadingProvider] Starting initial load...");
-      setIsInitialLoad(false);
+      setTimeout(() => setIsInitialLoad(false), 0);
       hasStartedPreloadRef.current = true;
       
       // Wait for DOM to be ready and React to finish rendering
@@ -108,7 +108,7 @@ export const LoadingProvider: React.FC<LoadingProviderProps> = ({ children }) =>
 
     // Only show loading on actual route changes (not initial load)
     if (!isInitialLoad) {
-      setIsLoading(true);
+      setTimeout(() => setIsLoading(true), 0);
       // Wait for Next.js to render the new route and DOM to update
       // Use multiple requestAnimationFrame calls to ensure rendering is complete
       let timer: NodeJS.Timeout | null = null;

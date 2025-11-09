@@ -1,7 +1,7 @@
 /* Insider Section Styles */
 .insider-section {
   padding: 80px 20px;
-  background-color: #000;
+  background-color: #1E4380;
   color: #fff;
 }
 
@@ -179,6 +179,8 @@
   flex-direction: column;
   gap: 24px;
   grid-column: 1 / -1;
+  justify-content: center;
+  align-items: center;
 }
 
 .insider-subheading {
@@ -315,11 +317,11 @@
 
 @media (min-width: 992px) {
   .testimonial-wrapper {
-    grid-column: span 7;
+    grid-column: 2 / span 7;
   }
 
   .insider-text-inner {
-    grid-column: 8 / 13;
+    grid-column: 9 / span 5;
   }
 }
 

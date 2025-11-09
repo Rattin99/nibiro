@@ -329,7 +329,7 @@ const HeroSection = () => {
 
   useEffect(() => {
     const positionedImages = generateImagePositions(mockProducts);
-    setImages(positionedImages);
+    setTimeout(() => setImages(positionedImages), 0);
 
     const handleScroll = () => {
       setScrollY(window.scrollY);
@@ -399,73 +399,76 @@ const HeroSection = () => {
       `}</style>
       <div
         ref={containerRef}
-        className="relative w-full h-screen overflow-hidden bg-red-800"
+        className="relative w-full h-screen overflow-hidden bg-[#E22028]"
         onMouseMove={(e) => handleMouseMove(e, null)}
         onMouseLeave={handleMouseLeave}
       >
         {/* Floating Product Images */}
-      {images.map((img, index) => {
-        const parallaxOffset = scrollY * img.depth * 0.5;
-        let scale = hoveredIndex
-          ? getProximityScale(index, hoveredIndex.mouseX, hoveredIndex.mouseY)
-          : 1;
-        
-        // Add extra scale boost when directly hovering over this image
-        if (hoveredIndex && hoveredIndex.index === index) {
-          scale = scale * 1.5;
-        }
+        {images.map((img, index) => {
+          const parallaxOffset = scrollY * img.depth * 0.5;
+          let scale = hoveredIndex
+            ? getProximityScale(index, hoveredIndex.mouseX, hoveredIndex.mouseY)
+            : 1;
 
-        return (
-          <div
-            key={img.id}
-            className="absolute cursor-pointer transition-transform duration-300 ease-out"
-            style={{
-              left: `${img.x}%`,
-              top: `${img.y}%`,
-              transform: `translate(-50%, -50%) translateY(${parallaxOffset}px) scale(${scale})`,
-              zIndex: Math.floor(img.z),
-            }}
-            onClick={() => handleImageClick(img.route)}
-            onMouseEnter={(e) => handleMouseMove(e, index)}
-          >
+          // Add extra scale boost when directly hovering over this image
+          if (hoveredIndex && hoveredIndex.index === index) {
+            scale = scale * 1.5;
+          }
+
+          return (
             <div
-              className="transition-shadow duration-300"
+              key={img.id}
+              className="absolute cursor-pointer transition-transform duration-300 ease-out"
               style={{
-                width: `${img.size}px`,
-                height: `${img.size}px`,
-                animation: `float ${3 + (img.id % 3)}s ease-in-out infinite`,
-                animationDelay: `${(img.id * 0.1) % 2}s`,
+                left: `${img.x}%`,
+                top: `${img.y}%`,
+                transform: `translate(-50%, -50%) translateY(${parallaxOffset}px) scale(${scale})`,
+                zIndex: Math.floor(img.z),
               }}
+              onClick={() => handleImageClick(img.route)}
+              onMouseEnter={(e) => handleMouseMove(e, index)}
             >
-              <img
-                src={img.url}
-                alt={`Product ${img.id}`}
-                className="w-full h-full"
+              <div
+                className="transition-shadow duration-300"
                 style={{
-                  opacity: 0.85 + (img.z / 400) * 0.15,
+                  width: `${img.size}px`,
+                  height: `${img.size}px`,
+                  animation: `float ${3 + (img.id % 3)}s ease-in-out infinite`,
+                  animationDelay: `${(img.id * 0.1) % 2}s`,
                 }}
-              />
+              >
+                <img
+                  src={img.url}
+                  alt={`Product ${img.id}`}
+                  className="w-full h-full"
+                  style={{
+                    opacity: 0.85 + (img.z / 400) * 0.15,
+                  }}
+                />
+              </div>
             </div>
-          </div>
-        );
-      })}
+          );
+        })}
 
-      {/* Hero Text Content */}
-      <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none" style={{ zIndex: 1000 }}>
-        <h1 className="text-6xl md:text-8xl font-bold text-white mb-6 text-center tracking-tight">
-          Custom Figurines
-        </h1>
-        <p className="text-xl md:text-2xl text-gray-300 text-center max-w-2xl px-4">
-          Transform your memories into stunning 3D printed masterpieces
-        </p>
-        <button className="mt-8 px-8 py-4 bg-white text-purple-900 rounded-full font-semibold text-lg hover:bg-purple-100 transition-colors pointer-events-auto">
-          Start Creating
-        </button>
+        {/* Hero Text Content */}
+        <div
+          className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none"
+          style={{ zIndex: 1000 }}
+        >
+          <h1 className="text-6xl md:text-8xl font-bold text-white mb-6 text-center tracking-tight">
+            Nibiro
+          </h1>
+          <p className="text-xl md:text-2xl text-gray-300 text-center max-w-2xl px-4">
+            Transform your memories into stunning 3D printed masterpieces
+          </p>
+          <button className="mt-8 px-8 py-4 bg-white text-purple-900 rounded-full font-semibold text-lg hover:bg-purple-100 transition-colors pointer-events-auto">
+            Start Creating
+          </button>
+        </div>
+
+        {/* Gradient Overlay */}
+        <div className="absolute inset-0  pointer-events-none" />
       </div>
-
-      {/* Gradient Overlay */}
-      <div className="absolute inset-0  pointer-events-none" />
-    </div>
     </>
   );
 };

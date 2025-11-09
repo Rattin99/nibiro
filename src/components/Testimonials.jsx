@@ -8,16 +8,12 @@ const Testimonials = () => {
   const allRow2Images = [...row1Images, ...row1Images];
 
   return (
-    <div className="w-full overflow-hidden bg-sk-sand py-20 md:py-36">
+    <div className="w-full overflow-hidden bg-[#00492C] py-32 md:py-48">
       <div className="mx-auto max-w-7xl px-5">
-        <div className="mb-16 flex w-full flex-col gap-8 md:flex-row md:items-start md:justify-between">
-          <div className="flex items-center gap-4 md:mt-2">
-            <div className="h-[6px] w-[6px] bg-sk-sea-tint"></div>
-            <p className="caption3 font-medium">TESTIMONIALS</p>
-          </div>
-          <h4 className="heading4 text-start md:text-end">
-            Trusted by <br /> the community
-          </h4>
+        <div className="mb-16 flex w-full flex-col gap-8 md:flex-row md:items-center md:justify-center">
+          <h2 className="text-5xl md:text-6xl font-bold text-center">
+            Trusted by the community
+          </h2>
         </div>
       </div>
 

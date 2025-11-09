@@ -112,7 +112,7 @@ const Footer = () => {
   return (
     <footer
       id="footer"
-      className="bg-[#0c0c0d] text-[#f9fafb] py-24 md:py-32 lg:py-48 relative overflow-hidden"
+      className="bg-[#E22028] text-[#f9fafb] py-24 md:py-32 lg:py-48 relative overflow-hidden"
     >
       {/* Links Container - LEFT ALIGNED */}
       <div className="max-w-[1800px] mx-auto px-8 md:px-12 flex flex-col justify-center items-start relative z-10">
@@ -152,11 +152,11 @@ const Footer = () => {
       </div>
 
       {/* Fire Animation */}
-      <div className="absolute bottom-0 w-full opacity-60 flex justify-center pointer-events-none">
+      <div className="absolute bottom-0 w-full flex justify-center pointer-events-none">
         <pre
           id="fire"
           ref={fireRef}
-          className="font-mono whitespace-pre leading-none text-[16px] sm:text-[18px] md:text-[20px]"
+          className="font-mono whitespace-pre leading-none text-white text-[16px] sm:text-[18px] md:text-[20px]"
         >
           Loading...
         </pre>
