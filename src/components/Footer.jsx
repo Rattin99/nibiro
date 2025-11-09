@@ -1,5 +1,7 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
+import { FaFacebook, FaYoutube, FaInstagram, FaDiscord } from "react-icons/fa";
+import { FaTiktok } from "react-icons/fa6";
 
 const Footer = () => {
   const fireRef = useRef(null);
@@ -126,27 +128,47 @@ const Footer = () => {
           </span>
         </div>
 
-        {/* LinkedIn */}
-        <div className="mb-4 hover:blur-sm transition-all duration-200">
+        {/* Social Media Icons */}
+        <div className="mb-4 flex gap-6 md:gap-8 lg:gap-10">
           <a
-            href="https://linkedin.com/company/nibiro"
+            href="#"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-4xl sm:text-6xl lg:text-8xl 2xl:text-9xl font-bold"
+            className="text-4xl sm:text-6xl lg:text-8xl 2xl:text-9xl hover:blur-sm transition-all duration-200"
           >
-            linkedin
+            <FaFacebook />
           </a>
-        </div>
-
-        {/* Instagram */}
-        <div className="mb-4 hover:blur-sm transition-all duration-200">
           <a
-            href="https://instagram.com/nibiro"
+            href="#"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-4xl sm:text-6xl lg:text-8xl 2xl:text-9xl font-bold"
+            className="text-4xl sm:text-6xl lg:text-8xl 2xl:text-9xl hover:blur-sm transition-all duration-200"
           >
-            instagram
+            <FaYoutube />
+          </a>
+          <a
+            href="#"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-4xl sm:text-6xl lg:text-8xl 2xl:text-9xl hover:blur-sm transition-all duration-200"
+          >
+            <FaInstagram />
+          </a>
+          <a
+            href="#"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-4xl sm:text-6xl lg:text-8xl 2xl:text-9xl hover:blur-sm transition-all duration-200"
+          >
+            <FaTiktok />
+          </a>
+          <a
+            href="#"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-4xl sm:text-6xl lg:text-8xl 2xl:text-9xl hover:blur-sm transition-all duration-200"
+          >
+            <FaDiscord />
           </a>
         </div>
       </div>
