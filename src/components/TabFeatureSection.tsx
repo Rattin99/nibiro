@@ -8,18 +8,16 @@ const TabFeatureSection = () => {
         {/* Header Section */}
         <div className="flex w-full flex-col justify-start gap-8 md:items-center md:justify-center md:gap-10">
           <h2 className="text-3xl md:text-4xl font-bold text-start md:text-center">
-            Tab Tab Tab...Ship
+            We Print Dreams
           </h2>
           <p className="text-base md:text-lg max-w-2xl text-start md:text-center">
-            A single keystroke, limitless power, complete flow. The full power of
-            Windsurf Tab is exclusive to the Windsurf Editor. Our IDE plugins
-            include only the autocomplete action.
+            At Nibiro, we don't just make products. We build the future's
+            memory. Every piece is a glimpse of who we're becoming{" "}
           </p>
         </div>
 
         {/* Video Section with Glowing Background */}
         <div className="relative flex w-full justify-center mt-14">
-          
           {/* Video Container */}
           <div className="relative z-10 mx-auto w-fit rounded-lg bg-white/5 p-1 md:p-3">
             <div className="relative flex max-h-screen w-full items-center justify-center rounded-md">
@@ -51,4 +49,3 @@ const TabFeatureSection = () => {
 };
 
 export default TabFeatureSection;
-

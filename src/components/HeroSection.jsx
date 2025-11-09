@@ -399,7 +399,7 @@ const HeroSection = () => {
       `}</style>
       <div
         ref={containerRef}
-        className="relative w-full h-screen overflow-hidden bg-[#E22028]"
+        className="relative w-full h-screen overflow-hidden bg-red-800"
         onMouseMove={(e) => handleMouseMove(e, null)}
         onMouseLeave={handleMouseLeave}
       >

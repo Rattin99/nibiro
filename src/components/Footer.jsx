@@ -99,7 +99,7 @@ const Footer = () => {
   }, []);
 
   const handleEmailClick = async () => {
-    const email = "contact@nibiro.com";
+    const email = "contact@nibiro.org";
     try {
       await navigator.clipboard.writeText(email);
       setCopied(true);
@@ -112,7 +112,7 @@ const Footer = () => {
   return (
     <footer
       id="footer"
-      className="bg-[#E22028] text-[#f9fafb] py-24 md:py-32 lg:py-48 relative overflow-hidden"
+      className="bg-red-800 text-[#f9fafb] py-24 md:py-32 lg:py-48 relative overflow-hidden"
     >
       {/* Links Container - LEFT ALIGNED */}
       <div className="max-w-[1800px] mx-auto px-8 md:px-12 flex flex-col justify-center items-start relative z-10">
@@ -122,7 +122,7 @@ const Footer = () => {
             onClick={handleEmailClick}
             className="text-4xl sm:text-6xl lg:text-8xl 2xl:text-9xl font-bold cursor-pointer"
           >
-            {copied ? "copied!" : "contact@nibiro.com"}
+            {copied ? "copied!" : "contact@nibiro.org"}
           </span>
         </div>
 

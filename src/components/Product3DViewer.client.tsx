@@ -140,10 +140,6 @@ const Product3DViewer: React.FC<Product3DViewerProps> = ({
         <ModelErrorBoundary onError={handleModelError}>
           <Canvas
             camera={{ position: [0, 0, 3], fov: 50 }}
-            onError={(e) => {
-              console.error('Product3DViewer: Canvas error', e);
-              handleModelError(e.message || "Unknown error");
-            }}
             style={{ width: '100%', height: '100%' }}
           >
             <Suspense fallback={null}>

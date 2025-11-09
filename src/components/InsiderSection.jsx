@@ -72,11 +72,9 @@ const InsiderSection = () => {
       <div className="insider-container">
         <div className="grid-layout">
           <h2 className="insider-heading">
-            You deserve the best.
+            You, Reimagined
             <br />
-            You deserve More:
-            <br />
-            <span className="light-green-span">Iced Matcha Latte.</span>
+            <span className="text-red-800">Become Anyone. Be Yourself.</span>
           </h2>
 
           <div className="insider-wrapper">
@@ -128,15 +126,14 @@ const InsiderSection = () => {
 
             <div className="insider-text-inner">
               <h3 className="insider-subheading">
-                We want to make healthy, science-backed nutrition simple and
-                accessible - so you can feel better, perform better, and enjoy
-                life every single day.
+                Turn your photos into 3D-printed art. Custom figurines that
+                capture your story, your style, your universe.{" "}
               </h3>
-              <p className="paragraph">
-                Loved by thousands of community members, this creation contains
-                real green tea powder, premium protein, and glucomannan.
-                Irresistibly delicious. Heavenly creamy.
-              </p>
+              {/* <p className="paragraph"> */}
+              {/*   Loved by thousands of community members, this creation contains */}
+              {/*   real green tea powder, premium protein, and glucomannan. */}
+              {/*   Irresistibly delicious. Heavenly creamy. */}
+              {/* </p> */}
             </div>
           </div>
         </div>
