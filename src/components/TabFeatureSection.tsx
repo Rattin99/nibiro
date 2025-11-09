@@ -3,7 +3,7 @@ import React from "react";
 
 const TabFeatureSection = () => {
   return (
-    <div className="relative flex w-full flex-col text-white bg-[#1E4380] py-16 md:py-24 px-4 md:px-8 overflow-x-hidden">
+    <div className="relative flex w-full flex-col text-white bg-[#171618]  py-16 md:py-24 px-4 md:px-8 overflow-x-hidden">
       <div className="max-w-7xl mx-auto w-full">
         {/* Header Section */}
         <div className="flex w-full flex-col justify-start gap-8 md:items-center md:justify-center md:gap-10">

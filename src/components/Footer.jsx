@@ -114,7 +114,7 @@ const Footer = () => {
   return (
     <footer
       id="footer"
-      className="bg-red-800 text-[#f9fafb] py-24 md:py-32 lg:py-48 relative overflow-hidden"
+      className="bg-[#171618] text-[#f9fafb] py-24 md:py-32 lg:py-48 relative overflow-hidden"
     >
       {/* Links Container - LEFT ALIGNED */}
       <div className="max-w-[1800px] mx-auto px-8 md:px-12 flex flex-col justify-center items-start relative z-10">
