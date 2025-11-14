@@ -68,9 +68,9 @@ const InsiderSection = () => {
   );
 
   return (
-    <div className="insider-section">
-      <div className="insider-container">
-        <div className="grid-layout">
+    <div className="insider-section" style={{ height: "100vh" }}>
+      <div className="insider-container" style={{ height: "100%" }}>
+        <div className="grid-layout" style={{ height: "100%", display: "flex", flexDirection: "column", justifyContent: "center" }}>
           <h2 className="insider-heading">
             You, Reimagined
             <br />
