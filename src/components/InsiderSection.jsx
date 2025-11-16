@@ -68,15 +68,9 @@ const InsiderSection = () => {
   );
 
   return (
-    <div className="insider-section">
+    <div className="insider-section bg-red-800">
       <div className="insider-container">
         <div className="grid-layout">
-          <h2 className="insider-heading">
-            You, Reimagined
-            <br />
-            <span className="text-red-800">Become Anyone. Be Yourself.</span>
-          </h2>
-
           <div className="insider-wrapper">
             <div className="testimonial-wrapper">
               {videos.map((video, index) => (
@@ -125,9 +119,16 @@ const InsiderSection = () => {
             </div>
 
             <div className="insider-text-inner">
+              <h2 className="insider-heading text-left">You, Reimagined</h2>
+              {/*   <span className="text-red-800"> */}
+              {/*     Become Anyone. Be Yourself. */}
+              {/*   </span> */}
+              {/* </h2> */}
+
               <h3 className="insider-subheading">
-                Turn your photos into 3D-printed art. Custom figurines that
-                capture your story, your style, your universe.{" "}
+                Turn your meomries and imaginations into sculptures. Custom
+                figurines that capture your story, your style, your
+                universe.{" "}
               </h3>
               {/* <p className="paragraph"> */}
               {/*   Loved by thousands of community members, this creation contains */}
