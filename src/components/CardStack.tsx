@@ -25,9 +25,9 @@ const CardStack: React.FC<CardStackProps> = ({ children }) => {
       // Set initial positions and opacity
       cards.forEach((card, index) => {
         if (index === 0) {
-          gsap.set(card, { y: 0, opacity: 1 });
+          gsap.set(card, { y: 0, opacity: 1, rotationX: 0 });
         } else {
-          gsap.set(card, { y: vh, opacity: 1 });
+          gsap.set(card, { y: vh, opacity: 1, rotationX: 0 });
         }
       });
 
@@ -56,11 +56,12 @@ const CardStack: React.FC<CardStackProps> = ({ children }) => {
             index,
           );
 
-          // The previous card fades out at the same time
+          // The previous card fades out, rotates like a falling domino
           tl.to(
             cards[index - 1],
             {
               opacity: 0,
+              rotationX: 15,
               duration: 1,
               ease: "power1.inOut",
             },
