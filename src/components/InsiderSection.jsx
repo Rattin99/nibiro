@@ -69,7 +69,7 @@ const InsiderSection = () => {
 
   return (
     <div className="insider-section ">
-      <div className="insider-container">
+      <div className="insider-container rounded-lg">
         <div className="grid-layout">
           <div className="insider-wrapper">
             <div className="testimonial-wrapper">

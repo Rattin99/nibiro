@@ -1,7 +1,7 @@
 "use client";
-import React, { useLayoutEffect, useRef } from 'react';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import React, { useLayoutEffect, useRef } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -22,12 +22,12 @@ const CardStack: React.FC<CardStackProps> = ({ children }) => {
     const ctx = gsap.context(() => {
       const vh = window.innerHeight;
 
-      // Set initial positions
+      // Set initial positions and opacity
       cards.forEach((card, index) => {
         if (index === 0) {
-          gsap.set(card, { y: 0 });
+          gsap.set(card, { y: 0, opacity: 1 });
         } else {
-          gsap.set(card, { y: vh });
+          gsap.set(card, { y: vh, opacity: 1 });
         }
       });
 
@@ -39,28 +39,42 @@ const CardStack: React.FC<CardStackProps> = ({ children }) => {
           start: "top top",
           end: `+=${cards.length * vh}`,
           scrub: 1,
-        }
+        },
       });
 
       // Add each card animation to the timeline
       cards.forEach((card, index) => {
         if (index > 0) {
-          // Each card slides up from bottom to top position
-          tl.to(card, {
-            y: 0,
-            duration: 1,
-            ease: "power1.inOut",
-          }, index); // Start at position 'index' in timeline
+          // The next card slides up
+          tl.to(
+            card,
+            {
+              y: 0,
+              duration: 1,
+              ease: "power1.inOut",
+            },
+            index,
+          );
+
+          // The previous card fades out at the same time
+          tl.to(
+            cards[index - 1],
+            {
+              opacity: 0,
+              duration: 1,
+              ease: "power1.inOut",
+            },
+            index,
+          ); // Same timing as the slide up
         }
       });
-
     }, container);
 
     return () => ctx.revert();
   }, [children]);
 
   return (
-    <div ref={containerRef} className="card-stack-container">
+    <div ref={containerRef} className="bg-red-800 card-stack-container">
       {React.Children.map(children, (child, index) => (
         <div key={index} className="card-item" style={{ zIndex: index + 1 }}>
           {child}
