@@ -1,102 +1,118 @@
 "use client";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { FaFacebook, FaYoutube, FaInstagram, FaDiscord } from "react-icons/fa";
 import { FaTiktok } from "react-icons/fa6";
 
 const Footer = () => {
-  const fireRef = useRef(null);
-  const intervalRef = useRef(null);
   const [copied, setCopied] = useState(false);
+  const canvasRef = useRef(null);
+  const gridRef = useRef(null);
+  const animationRef = useRef(null);
 
   useEffect(() => {
-    // Fire animation variables
-    let fireWidth = 500;
-    let fireHeight = 100;
-    let firePixels = [];
-    const fireCharsString =
-      ",;+ltgti!lI?/\\|)(1}{][rcvzjftJUOQocxfXhqwWB8&%$#@";
-    let fireChars = [];
-    let maxCharIndex = 0;
-    let initialized = 0;
+    const canvas = canvasRef.current;
+    if (!canvas) return;
 
-    const initFireChars = () => {
-      // Build character array starting with a space
-      let tempString = " ";
-      const maxLength = fireCharsString.length - 1;
-      const limit = fireWidth > maxLength ? maxLength : fireWidth;
+    const ctx = canvas.getContext("2d");
+    const cellSize = 20;
 
-      for (let i = 0; i < limit; i++) {
-        tempString += fireCharsString[i];
-      }
+    const resizeCanvas = () => {
+      canvas.width = canvas.offsetWidth;
+      canvas.height = canvas.offsetHeight;
 
-      fireChars = tempString.split("");
-      maxCharIndex = fireChars.length - 1;
+      const cols = Math.floor(canvas.width / cellSize);
+      const rows = Math.floor(canvas.height / cellSize);
+
+      // Initialize grid with random cells (higher density for more activity)
+      const grid = Array(rows)
+        .fill(null)
+        .map(() =>
+          Array(cols)
+            .fill(null)
+            .map(() => (Math.random() > 0.5 ? 1 : 0)),
+        );
+
+      gridRef.current = { grid, cols, rows };
     };
 
-    const animateFire = () => {
-      // Initialize on first run
-      if (initialized === 0) {
-        // Initialize all pixels to 0
-        for (let i = 0; i < fireWidth * fireHeight + 1; i++) {
-          firePixels[i] = 0;
+    resizeCanvas();
+    window.addEventListener("resize", resizeCanvas);
+
+    const countNeighbors = (grid, x, y, cols, rows) => {
+      let count = 0;
+      for (let i = -1; i <= 1; i++) {
+        for (let j = -1; j <= 1; j++) {
+          if (i === 0 && j === 0) continue;
+          const newX = (x + i + rows) % rows;
+          const newY = (y + j + cols) % cols;
+          count += grid[newX][newY];
         }
-        initFireChars();
-        initialized = 1;
       }
+      return count;
+    };
 
-      // Seed bottom row with random fire pixels
-      for (let i = 0; i < Math.floor(fireWidth / 3); i++) {
-        const randomX = Math.floor(Math.random() * fireWidth);
-        const bottomRowIndex = randomX + fireWidth * (fireHeight - 1);
-        firePixels[bottomRowIndex] = Math.floor(Math.random() * maxCharIndex);
-      }
+    const updateGrid = () => {
+      if (!gridRef.current) return;
 
-      // Add some zeros to bottom row (creates gaps in fire)
-      for (let i = 0; i < Math.floor(fireWidth / 2); i++) {
-        const randomX = Math.floor(Math.random() * fireWidth);
-        const bottomRowIndex = randomX + fireWidth * (fireHeight - 1);
-        firePixels[bottomRowIndex] = 0;
-      }
+      const { grid, cols, rows } = gridRef.current;
+      const newGrid = grid.map((arr) => [...arr]);
 
-      // Propagate fire upward (but don't render the last row)
-      let outputString = "";
-      for (let i = 0; i < fireWidth * (fireHeight - 1); i++) {
-        // Average this pixel with right, bottom, and bottom-right neighbors
-        const average =
-          (firePixels[i] +
-            firePixels[i + 1] +
-            firePixels[i + fireWidth] +
-            firePixels[i + fireWidth + 1]) /
-          4;
+      for (let i = 0; i < rows; i++) {
+        for (let j = 0; j < cols; j++) {
+          const neighbors = countNeighbors(grid, i, j, cols, rows);
 
-        firePixels[i] = Math.floor(average);
-
-        // Map to character
-        const charIndex =
-          firePixels[i] > maxCharIndex ? maxCharIndex : firePixels[i];
-        outputString += fireChars[charIndex];
-
-        // Add newline at end of each row
-        if ((i + 1) % fireWidth === 0) {
-          outputString += "\n";
+          if (grid[i][j] === 1) {
+            newGrid[i][j] = neighbors === 2 || neighbors === 3 ? 1 : 0;
+          } else {
+            newGrid[i][j] = neighbors === 3 ? 1 : 0;
+          }
         }
       }
 
-      // Update the DOM
-      if (fireRef.current && fireRef.current.firstChild) {
-        fireRef.current.firstChild.data = outputString;
-      }
-
-      // Continue animation
-      setTimeout(animateFire, 30);
+      gridRef.current.grid = newGrid;
     };
 
-    // Start the animation
-    animateFire();
+    const bengaliChars =
+      "০১২৩৪৫৬৭৮৯অআইঈউঊঋএঐওঔকখগঘঙচছজঝঞটঠডঢণতথদধনপফবভমযরলশষসহড়ঢ়য়ৎংঃ";
 
-    // Cleanup
+    const draw = () => {
+      if (!gridRef.current) return;
+
+      const { grid, cols, rows } = gridRef.current;
+
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      ctx.fillStyle = "#ffffff";
+      ctx.font = `${cellSize - 2}px monospace`;
+      ctx.textAlign = "center";
+      ctx.textBaseline = "middle";
+
+      for (let i = 0; i < rows; i++) {
+        for (let j = 0; j < cols; j++) {
+          if (grid[i][j] === 1) {
+            const randomChar =
+              bengaliChars[Math.floor(Math.random() * bengaliChars.length)];
+            ctx.fillText(
+              randomChar,
+              j * cellSize + cellSize / 2,
+              i * cellSize + cellSize / 2,
+            );
+          }
+        }
+      }
+    };
+
+    const animate = () => {
+      updateGrid();
+      draw();
+      animationRef.current = setTimeout(animate, 100);
+    };
+
+    animate();
+
     return () => {
-      initialized = 0;
+      window.removeEventListener("resize", resizeCanvas);
+      if (animationRef.current) clearTimeout(animationRef.current);
     };
   }, []);
 
@@ -116,7 +132,12 @@ const Footer = () => {
       id="footer"
       className="bg-[#171618] text-[#f9fafb] py-24 md:py-32 lg:py-48 relative overflow-hidden"
     >
-      {/* Links Container - LEFT ALIGNED */}
+      <canvas
+        ref={canvasRef}
+        className="absolute inset-0 w-full h-full"
+        style={{ opacity: 0.3 }}
+      />
+
       <div className="max-w-[1800px] mx-auto px-8 md:px-12 flex flex-col justify-center items-start relative z-10">
         {/* Email */}
         <div className="mb-4 hover:blur-sm transition-all duration-200">
@@ -127,7 +148,6 @@ const Footer = () => {
             {copied ? "copied!" : "contact@nibiro.org"}
           </span>
         </div>
-
         {/* Social Media Icons */}
         <div className="mb-4 flex gap-6 md:gap-8 lg:gap-10">
           <a
@@ -171,17 +191,6 @@ const Footer = () => {
             <FaDiscord />
           </a>
         </div>
-      </div>
-
-      {/* Fire Animation */}
-      <div className="absolute bottom-0 w-full flex justify-center pointer-events-none">
-        <pre
-          id="fire"
-          ref={fireRef}
-          className="font-mono whitespace-pre leading-none text-white text-[16px] sm:text-[18px] md:text-[20px]"
-        >
-          Loading...
-        </pre>
       </div>
     </footer>
   );
