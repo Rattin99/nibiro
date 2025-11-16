@@ -61,17 +61,19 @@ body {
   position: relative;
   height: 100vh;
   width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  /* This is important for the 3D rotation effect */
-  perspective: 1000px;
+  overflow: hidden;
 }
 
 .card-item {
   position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
-  max-width: 100%;
+  height: 100vh;
+  will-change: transform;
+}
+
+.card-item > * {
+  width: 100%;
   height: 100%;
-  transform-origin: center center;
 }

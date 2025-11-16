@@ -68,7 +68,7 @@ const InsiderSection = () => {
   );
 
   return (
-    <div className="insider-section bg-red-800">
+    <div className="insider-section ">
       <div className="insider-container">
         <div className="grid-layout">
           <div className="insider-wrapper">
