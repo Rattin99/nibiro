@@ -7,16 +7,19 @@ import InsiderSection from "@/components/InsiderSection";
 import Testimonials from "@/components/Testimonials";
 import Manifesto from "@/components/Manifesto";
 import Footer from "@/components/Footer";
+import CardStack from "@/components/CardStack";
 
 export default function Home() {
   return (
     <>
       <Navbar />
       <HeroSection />
-      <TabFeatureSection />
-      <InsiderSection />
+      <CardStack>
+        <TabFeatureSection />
+        <InsiderSection />
+        <Manifesto />
+      </CardStack>
       <Testimonials />
-      <Manifesto />
       <Footer />
     </>
   );
