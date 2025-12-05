@@ -119,13 +119,15 @@ const InsiderSection = () => {
             </div>
 
             <div className="insider-text-inner">
-              <h2 className="insider-heading text-left">You, Reimagined</h2>
-              {/*   <span className="text-red-800"> */}
-              {/*     Become Anyone. Be Yourself. */}
-              {/*   </span> */}
-              {/* </h2> */}
+              <h2 className="text-left  font-montserrat text-6xl font-semibold  mb-4 leading-tight">
+                <span>You </span>
+                <span>Reimagined</span>
+              </h2>
+              {/* <span className="text-red-800 font-inter text-2xl lg:text-3xl font-medium block mb-8">
+                Become Anyone. Be Yourself.
+              </span> */}
 
-              <h3 className="insider-subheading">
+              <h3 className="insider-subheading font-inter text-lg lg:text-xl leading-relaxed">
                 Turn your memories and imaginations into sculptures. Custom
                 figurines that capture your story, your style, your
                 universe.{" "}
