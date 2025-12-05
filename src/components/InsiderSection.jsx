@@ -68,7 +68,7 @@ const InsiderSection = () => {
   );
 
   return (
-    <div className="insider-section ">
+    <div className="insider-section bg-neutral-950">
       <div className="insider-container rounded-lg">
         <div className="grid-layout">
           <div className="insider-wrapper">
@@ -126,7 +126,7 @@ const InsiderSection = () => {
               {/* </h2> */}
 
               <h3 className="insider-subheading">
-                Turn your meomries and imaginations into sculptures. Custom
+                Turn your memories and imaginations into sculptures. Custom
                 figurines that capture your story, your style, your
                 universe.{" "}
               </h3>

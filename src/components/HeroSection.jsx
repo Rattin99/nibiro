@@ -382,24 +382,11 @@ const HeroSection = () => {
   return (
     <>
       <style>{`
-        @keyframes float {
-          0%, 100% {
-            transform: translateY(0px) rotate(0deg);
-          }
-          25% {
-            transform: translateY(-10px) rotate(1deg);
-          }
-          50% {
-            transform: translateY(-5px) rotate(0deg);
-          }
-          75% {
-            transform: translateY(-15px) rotate(-1deg);
-          }
-        }
+
       `}</style>
       <div
         ref={containerRef}
-        className="relative w-full h-screen overflow-hidden bg-red-800"
+        className="relative w-full h-screen overflow-hidden bg-neutral-950"
         onMouseMove={(e) => handleMouseMove(e, null)}
         onMouseLeave={handleMouseLeave}
       >
@@ -433,8 +420,8 @@ const HeroSection = () => {
                 style={{
                   width: `${img.size}px`,
                   height: `${img.size}px`,
-                  animation: `float ${3 + (img.id % 3)}s ease-in-out infinite`,
-                  animationDelay: `${(img.id * 0.1) % 2}s`,
+
+
                 }}
               >
                 <img

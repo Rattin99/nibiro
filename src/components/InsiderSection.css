@@ -15,7 +15,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: green;
+  /* background-color: green; */
 }
 
 .grid-layout {
@@ -24,13 +24,13 @@
   gap: 60px;
 }
 
-/* .insider-heading { */
-/*   font-size: 3.5rem; */
-/*   font-weight: 700; */
-/*   line-height: 1.2; */
-/**/
-/*   text-align: left; */
-/* } */
+.insider-heading {
+  font-size: 3.5rem;
+  font-weight: 700;
+  line-height: 1.2;
+
+  text-align: left;
+}
 
 .light-green-span {
   color: #9fe870;
