@@ -420,8 +420,6 @@ const HeroSection = () => {
                 style={{
                   width: `${img.size}px`,
                   height: `${img.size}px`,
-
-
                 }}
               >
                 <img
@@ -442,15 +440,20 @@ const HeroSection = () => {
           className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none"
           style={{ zIndex: 1000 }}
         >
-          <h1 className="text-6xl md:text-8xl font-bold text-white mb-6 text-center tracking-tight">
-            Nibiro
+          <h1 className="flex font-black tracking-tighter text-white select-none font-montserrat">
+            {"nibiro".split("").map((letter, i) => (
+              <span
+                key={i}
+                className="pointer-events-auto cursor-default transition-colors duration-500 hover:text-transparent"
+                style={{
+                  fontSize: "18vw",
+                  WebkitTextStroke: "2px white",
+                }}
+              >
+                {letter}
+              </span>
+            ))}
           </h1>
-          <p className="text-xl md:text-2xl text-gray-300 text-center max-w-2xl px-4">
-            Transform your memories into stunning 3D printed masterpieces
-          </p>
-          <button className="mt-8 px-8 py-4 bg-white text-purple-900 rounded-full font-semibold text-lg hover:bg-purple-100 transition-colors pointer-events-auto">
-            Start Creating
-          </button>
         </div>
 
         {/* Gradient Overlay */}
