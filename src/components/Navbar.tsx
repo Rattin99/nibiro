@@ -4,16 +4,15 @@ import React, { useState, useEffect } from "react";
 const Navbar = () => {
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
 
       if (currentScrollY < lastScrollY) {
-        // Scrolling up
         setIsVisible(true);
       } else if (currentScrollY > lastScrollY && currentScrollY > 100) {
-        // Scrolling down and past 100px
         setIsVisible(false);
       }
 
@@ -24,58 +23,153 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [lastScrollY]);
 
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+    if (!isMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+  };
+
+  const closeMenu = () => {
+    setIsMenuOpen(false);
+    document.body.style.overflow = "";
+  };
+
   return (
-    <nav
-      className={`fixed top-4 left-1/2 -translate-x-1/2 z-[999] transition-all duration-300 ease-in-out ${
-        isVisible
-          ? "opacity-100 translate-y-0"
-          : "opacity-0 -translate-y-full pointer-events-none"
-      } w-[80%] max-w-screen-md`}
-    >
-      <div className="bg-white/80 backdrop-blur-md rounded-md px-6 py-3 shadow-lg border border-white/20">
-        <div className="relative flex items-center justify-between w-full">
+    <>
+      <nav
+        className={`fixed top-0 left-0 right-0 z-[999] px-6 sm:px-10 lg:px-10 py-4 transition-transform duration-300 ease-in-out ${
+          isVisible ? "translate-y-0" : "-translate-y-full"
+        }`}
+      >
+        <div className="max-w-[120rem] mx-auto h-20 sm:h-24 lg:h-[7.5rem] flex items-center justify-between">
           {/* Logo */}
-          <div className="flex items-center">
-            <div className="w-8 h-8 bg-gradient-to-br from-red-500 to-blue-500 rounded-full flex items-center justify-center text-white font-bold text-sm">
+          <a href="/" className="relative z-[1000] h-14 sm:h-16 lg:h-[4.75rem]">
+            <div className="h-full aspect-square bg-gradient-to-br from-red-500 to-blue-500 rounded-full flex items-center justify-center text-white font-bold text-xl sm:text-2xl">
               N
             </div>
-          </div>
+          </a>
 
-          {/* Navigation Links - Centered */}
-          <div className="absolute left-1/2 -translate-x-1/2 flex items-center gap-6">
+          {/* Desktop Center Menu - Pill Container */}
+          <div className="hidden lg:flex absolute left-1/2 -translate-x-1/2 bg-white rounded-2xl h-14 px-2 py-2 gap-2 shadow-sm">
             <a
               href="#shop"
-              className="text-gray-700 hover:text-purple-600 transition-colors duration-200 font-medium"
+              className="px-6 py-2 rounded-xl text-black hover:bg-gray-100 transition-colors duration-200 font-medium flex items-center"
             >
               Shop
             </a>
             <a
               href="#custom"
-              className="text-gray-700 hover:text-purple-600 transition-colors duration-200 font-medium"
+              className="px-6 py-2 rounded-xl text-black hover:bg-gray-100 transition-colors duration-200 font-medium flex items-center"
             >
               Custom
             </a>
             <a
               href="#blogs"
-              className="text-gray-700 hover:text-purple-600 transition-colors duration-200 font-medium"
+              className="px-6 py-2 rounded-xl text-black hover:bg-gray-100 transition-colors duration-200 font-medium flex items-center"
             >
               Blogs
             </a>
             <a
               href="#contact"
-              className="text-gray-700 hover:text-purple-600 transition-colors duration-200 font-medium"
+              className="px-6 py-2 rounded-xl text-black hover:bg-gray-100 transition-colors duration-200 font-medium flex items-center"
             >
               Contact
             </a>
           </div>
 
-          {/* User Avatar */}
-          <div className="w-8 h-8 bg-gray-300 rounded-full flex items-center justify-center text-gray-700 font-bold text-sm">
-            U
+          {/* Right Side - CTA Button (Desktop) and Hamburger (Mobile) */}
+          <div className="flex items-center gap-4">
+            {/* CTA Button - Desktop Only */}
+            <div className="hidden lg:block">
+              <a
+                href="#cta"
+                className="inline-flex items-center px-6 py-3 bg-black text-white rounded-full hover:bg-red-500 transition-all duration-300 font-medium"
+              >
+                Get Started
+              </a>
+            </div>
+
+            {/* Hamburger Menu Button - Tablet and Mobile Only */}
+            <button
+              onClick={toggleMenu}
+              className="lg:hidden relative z-[1000] w-12 h-12 sm:w-14 sm:h-14 bg-pink-500 rounded-xl flex flex-col items-center justify-center gap-1"
+              aria-label="Toggle menu"
+            >
+              <span
+                className={`w-5 h-0.5 bg-black transition-all duration-300 ${
+                  isMenuOpen ? "rotate-45 translate-y-1.5" : "-translate-y-1"
+                }`}
+              ></span>
+              <span
+                className={`w-5 h-0.5 bg-black transition-all duration-300 ${
+                  isMenuOpen ? "-rotate-45 -translate-y-1.5" : "translate-y-1"
+                }`}
+              ></span>
+            </button>
           </div>
         </div>
+      </nav>
+
+      {/* Full Screen Mobile Menu Overlay */}
+      <div
+        className={`fixed inset-0 z-[998] lg:hidden transition-all duration-500 ${
+          isMenuOpen
+            ? "opacity-100 pointer-events-auto"
+            : "opacity-0 pointer-events-none"
+        }`}
+        style={{
+          background: isMenuOpen
+            ? "linear-gradient(135deg, #ec4899 0%, #f97316 100%)"
+            : "transparent",
+        }}
+      >
+        <div className="flex flex-col items-center justify-center h-full px-8">
+          {/* Menu Links */}
+          <div className="flex flex-col items-center gap-6 sm:gap-8 mb-12">
+            <a
+              href="#shop"
+              onClick={closeMenu}
+              className="text-4xl sm:text-5xl md:text-6xl font-bold text-white hover:scale-110 transition-transform duration-300"
+            >
+              Shop
+            </a>
+            <a
+              href="#custom"
+              onClick={closeMenu}
+              className="text-4xl sm:text-5xl md:text-6xl font-bold text-white hover:scale-110 transition-transform duration-300"
+            >
+              Custom
+            </a>
+            <a
+              href="#blogs"
+              onClick={closeMenu}
+              className="text-4xl sm:text-5xl md:text-6xl font-bold text-white hover:scale-110 transition-transform duration-300"
+            >
+              Blogs
+            </a>
+            <a
+              href="#contact"
+              onClick={closeMenu}
+              className="text-4xl sm:text-5xl md:text-6xl font-bold text-white hover:scale-110 transition-transform duration-300"
+            >
+              Contact
+            </a>
+          </div>
+
+          {/* CTA Button in Mobile Menu */}
+          <a
+            href="#cta"
+            onClick={closeMenu}
+            className="inline-flex items-center px-8 py-4 bg-white text-black rounded-full hover:bg-black hover:text-white transition-all duration-300 font-bold text-lg"
+          >
+            Get Started
+          </a>
+        </div>
       </div>
-    </nav>
+    </>
   );
 };
 
