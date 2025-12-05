@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
+import gsap from "gsap";
 
 // Quadtree implementation for efficient spatial queries
 class QuadTree {
@@ -104,6 +105,50 @@ const HeroSection = () => {
 
   const [scrollY, setScrollY] = useState(0);
   const containerRef = useRef(null);
+  const imageRefs = useRef({});
+
+  // Global mouse handler to track movement even over other elements
+  useEffect(() => {
+    const handleGlobalMouseMove = (e) => {
+      Object.entries(imageRefs.current).forEach(([id, el]) => {
+        if (!el) return;
+
+        const rect = el.getBoundingClientRect();
+        const centerX = rect.left + rect.width / 2;
+        const centerY = rect.top + rect.height / 2;
+
+        // Check if mouse is roughly over the image (using a slightly larger hit area for better UX)
+        const hitRadius = rect.width / 2; 
+        const dx = e.clientX - centerX;
+        const dy = e.clientY - centerY;
+        const distance = Math.sqrt(dx * dx + dy * dy);
+
+        if (distance < hitRadius) {
+          // Hover state - move slightly
+          gsap.to(el, {
+            x: dx * 0.3,
+            y: dy * 0.3,
+            duration: 0.5,
+            ease: "power2.out",
+            overwrite: "auto",
+          });
+        } else {
+          // Return to origin (only if currently displaced and not being hovered)
+          // We use overwrite: "auto" to let GSAP handle conflicts
+           gsap.to(el, {
+            x: 0,
+            y: 0,
+            duration: 1.2,
+            ease: "elastic.out(1, 0.3)",
+             overwrite: "auto",
+          });
+        }
+      });
+    };
+
+    window.addEventListener("mousemove", handleGlobalMouseMove);
+    return () => window.removeEventListener("mousemove", handleGlobalMouseMove);
+  }, [images]); // Re-bind if images list changes
 
   // Mock API response - replace with actual API call
   const mockProducts = [
@@ -363,7 +408,6 @@ const HeroSection = () => {
         {/* Floating Product Images */}
         {images.map((img, index) => {
           const parallaxOffset = scrollY * img.depth * 0.5;
-          let scale = 1;
 
           return (
             <div
@@ -372,12 +416,13 @@ const HeroSection = () => {
               style={{
                 left: `${img.x}%`,
                 top: `${img.y}%`,
-                transform: `translate(-50%, -50%) translateY(${parallaxOffset}px) scale(${scale})`,
+                transform: `translate(-50%, -50%) translateY(${parallaxOffset}px)`,
                 zIndex: Math.floor(img.z),
               }}
               onClick={() => handleImageClick(img.route)}
             >
               <div
+                ref={(el) => (imageRefs.current[img.id] = el)}
                 className="transition-shadow duration-300"
                 style={{
                   width: `${img.size}px`,
