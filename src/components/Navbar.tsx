@@ -1,6 +1,25 @@
 "use client";
 import React, { useState, useEffect } from "react";
 
+const NavButton = ({ href, children }: { href: string; children: React.ReactNode }) => {
+  return (
+    <a
+      href={href}
+      className="relative px-6 py-2 rounded-xl overflow-hidden group flex items-center justify-center"
+    >
+      <span className="absolute inset-0 bg-red-500 translate-y-[100%] group-hover:translate-y-0 transition-transform duration-300 ease-in-out" />
+      <span className="relative z-10 overflow-hidden block">
+        <span className="block text-black transition-transform duration-300 ease-in-out group-hover:-translate-y-full">
+          {children}
+        </span>
+        <span className="absolute inset-0 flex items-center justify-center text-white translate-y-full transition-transform duration-300 ease-in-out group-hover:translate-y-0">
+          {children}
+        </span>
+      </span>
+    </a>
+  );
+};
+
 const Navbar = () => {
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
@@ -54,30 +73,10 @@ const Navbar = () => {
 
           {/* Desktop Center Menu - Pill Container */}
           <div className="hidden lg:flex absolute left-1/2 -translate-x-1/2 bg-white rounded-2xl h-14 px-2 py-2 gap-2 shadow-sm">
-            <a
-              href="#shop"
-              className="px-6 py-2 rounded-xl text-black hover:bg-gray-100 transition-colors duration-200 font-medium flex items-center"
-            >
-              Shop
-            </a>
-            <a
-              href="#custom"
-              className="px-6 py-2 rounded-xl text-black hover:bg-gray-100 transition-colors duration-200 font-medium flex items-center"
-            >
-              Custom
-            </a>
-            <a
-              href="#blogs"
-              className="px-6 py-2 rounded-xl text-black hover:bg-gray-100 transition-colors duration-200 font-medium flex items-center"
-            >
-              Blogs
-            </a>
-            <a
-              href="#contact"
-              className="px-6 py-2 rounded-xl text-black hover:bg-gray-100 transition-colors duration-200 font-medium flex items-center"
-            >
-              Contact
-            </a>
+            <NavButton href="#shop">Shop</NavButton>
+            <NavButton href="#custom">Custom</NavButton>
+            <NavButton href="#blogs">Blogs</NavButton>
+            <NavButton href="#contact">Contact</NavButton>
           </div>
 
           {/* Right Side - CTA Button (Desktop) and Hamburger (Mobile) */}
