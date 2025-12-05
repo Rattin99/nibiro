@@ -8,7 +8,7 @@ const Testimonials = () => {
   const allRow2Images = [...row1Images, ...row1Images];
 
   return (
-    <div className="w-full overflow-hidden bg-red-800 py-32 md:py-48">
+    <div className="w-full overflow-hidden bg-neutral-950 py-32 md:py-48">
       <div className="mx-auto max-w-7xl px-5">
         <div className="mb-16 flex w-full flex-col gap-8 md:flex-row md:items-center md:justify-center">
           <h2 className="text-5xl md:text-6xl font-bold text-center">
