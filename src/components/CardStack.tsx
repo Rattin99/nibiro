@@ -16,18 +16,30 @@ const CardStack: React.FC<CardStackProps> = ({ children }) => {
     const container = containerRef.current;
     if (!container) return;
 
-    const cards = gsap.utils.toArray<HTMLElement>(".card-item");
+    // Scope selection to the specific container to avoid conflicts
+    const cards = gsap.utils.toArray<HTMLElement>(".card-item", container);
     if (cards.length === 0) return;
 
     const ctx = gsap.context(() => {
-      const vh = window.innerHeight;
-
-      // Set initial positions and opacity
+      // Set initial positions using yPercent for better responsiveness
       cards.forEach((card, index) => {
         if (index === 0) {
-          gsap.set(card, { y: 0, opacity: 1, rotationX: 0 });
+          gsap.set(card, {
+            yPercent: 0,
+            opacity: 1,
+            rotationX: 0,
+            scale: 1,
+            z: 0,
+          });
         } else {
-          gsap.set(card, { y: vh, opacity: 1, rotationX: 0 });
+          // Move other cards down by 100% of their height
+          gsap.set(card, {
+            yPercent: 100,
+            opacity: 1,
+            rotationX: 0,
+            scale: 1,
+            z: 0,
+          });
         }
       });
 
@@ -37,36 +49,45 @@ const CardStack: React.FC<CardStackProps> = ({ children }) => {
           trigger: container,
           pin: true,
           start: "top top",
-          end: `+=${cards.length * vh}`,
+          // Use a function for 'end' to handle resizes correctly
+          end: () => `+=${window.innerHeight * cards.length}`,
           scrub: 1,
+          invalidateOnRefresh: true,
         },
       });
 
       // Add each card animation to the timeline
       cards.forEach((card, index) => {
         if (index > 0) {
+          // Start animation earlier to avoid initial dead scroll space
+          const position = index - 1;
+
           // The next card slides up
           tl.to(
             card,
             {
-              y: 0,
+              yPercent: 0,
               duration: 1,
               ease: "power1.inOut",
             },
-            index,
+            position,
           );
 
-          // The previous card fades out, rotates like a falling domino
+          // The previous card scales down, rotates, and moves back in Z space
           tl.to(
             cards[index - 1],
             {
-              opacity: 0,
+              scale: 0.9,
               rotationX: 15,
+              z: -100, // Move back to prevent clipping
               duration: 1,
               ease: "power1.inOut",
             },
-            index,
-          ); // Same timing as the slide up
+            position,
+          );
+
+          // Hide the previous card instantly after the transition
+          tl.set(cards[index - 1], { autoAlpha: 0 }, position + 1);
         }
       });
     }, container);

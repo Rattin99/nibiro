@@ -118,23 +118,20 @@ const InsiderSection = () => {
               ))}
             </div>
 
-            <div className="insider-text-inner">
-              <h2 className="insider-heading text-left">You, Reimagined</h2>
-              {/*   <span className="text-red-800"> */}
-              {/*     Become Anyone. Be Yourself. */}
-              {/*   </span> */}
-              {/* </h2> */}
+            <div className="insider-text-inner flex flex-col justify-center items-start gap-6 lg:gap-8 p-6 md:p-10 ">
+              <h2 className="insider-heading text-left font-montserrat font-bold text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl leading-tight tracking-tight">
+                <span>You </span>
+                <span>Reimagined</span>
+              </h2>
+              {/* <span className="text-red-800 font-inter text-xl sm:text-2xl lg:text-3xl font-medium block">
+                Become Anyone. Be Yourself.
+              </span> */}
 
-              <h3 className="insider-subheading">
-                Turn your memories and imaginations into sculptures. Custom
-                figurines that capture your story, your style, your
-                universe.{" "}
+              <h3 className="insider-subheading font-inter text-base sm:text-md md:text-xl lg:text-2xl leading-relaxed text-gray-300 max-w-2xl">
+                Turn your memories and imaginations into sculptures. <br />{" "}
+                Custom figurines that capture your story, your style, your
+                universe.
               </h3>
-              {/* <p className="paragraph"> */}
-              {/*   Loved by thousands of community members, this creation contains */}
-              {/*   real green tea powder, premium protein, and glucomannan. */}
-              {/*   Irresistibly delicious. Heavenly creamy. */}
-              {/* </p> */}
             </div>
           </div>
         </div>

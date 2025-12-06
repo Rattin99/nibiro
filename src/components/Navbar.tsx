@@ -63,7 +63,7 @@ const Navbar = () => {
           isVisible ? "translate-y-0" : "-translate-y-full"
         }`}
       >
-        <div className="max-w-[120rem] mx-auto h-20 sm:h-24 lg:h-[7.5rem] flex items-center justify-between">
+        <div className="max-w-[120rem] mx-auto h-20 sm:h-24 lg:h-[7.5rem] flex items-center justify-between font-montserrat">
           {/* Logo */}
           <a href="/" className="relative z-[1000] h-14 sm:h-16 lg:h-[4.75rem]">
             <div className="h-full aspect-square bg-gradient-to-br from-red-500 to-blue-500 rounded-full flex items-center justify-center text-white font-bold text-xl sm:text-2xl">
