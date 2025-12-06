@@ -74,7 +74,7 @@ const Navbar = () => {
           {/* Desktop Center Menu - Pill Container */}
           <div className="hidden lg:flex absolute left-1/2 -translate-x-1/2 bg-white rounded-2xl h-14 px-2 py-2 gap-2 shadow-sm">
             <NavButton href="/shop">Shop</NavButton>
-            <NavButton href="#custom">Custom</NavButton>
+            <NavButton href="/custom">Custom</NavButton>
             <NavButton href="#blogs">Blogs</NavButton>
             <NavButton href="#contact">Contact</NavButton>
           </div>
@@ -136,7 +136,7 @@ const Navbar = () => {
               Shop
             </a>
             <a
-              href="#custom"
+              href="/custom"
               onClick={closeMenu}
               className="text-4xl sm:text-5xl md:text-6xl font-bold text-white hover:scale-110 transition-transform duration-300"
             >
