@@ -3,7 +3,7 @@ import React from "react";
 
 const TabFeatureSection = () => {
   return (
-    <div className="relative flex w-full h-full flex-col items-center justify-center text-white bg-neutral-950 py-16 md:py-24 px-4 md:px-8 overflow-hidden">
+    <div className="relative flex w-full h-full flex-col items-center justify-center text-white bg-[#C62622] py-16 md:py-24 px-4 md:px-8 overflow-hidden">
       <div className="absolute inset-0 flex flex-col items-center justify-center">
         {/* Video Section */}
         <div className="relative flex w-[90%] h-[90%] justify-center items-center  rounded-lg overflow-hidden">

@@ -68,8 +68,8 @@ const InsiderSection = () => {
   );
 
   return (
-    <div className="insider-section bg-neutral-950">
-      <div className="insider-container rounded-lg">
+    <div className="insider-section">
+      <div className="insider-container  bg-[#3CBF8A] rounded-lg">
         <div className="grid-layout">
           <div className="insider-wrapper">
             <div className="testimonial-wrapper">
@@ -119,19 +119,27 @@ const InsiderSection = () => {
             </div>
 
             <div className="insider-text-inner flex flex-col justify-center items-start gap-6 lg:gap-8 p-6 md:p-10 ">
-              <h2 className="insider-heading text-left font-montserrat font-bold text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl leading-tight tracking-tight">
-                <span>You </span>
-                <span>Reimagined</span>
+              <h2 className="insider-heading text-left font-montserrat font-bold text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl leading-[0.9] tracking-tighter text-black">
+                <span className="block">You</span>
+                <span className="block">Reimagined</span>
               </h2>
               {/* <span className="text-red-800 font-inter text-xl sm:text-2xl lg:text-3xl font-medium block">
                 Become Anyone. Be Yourself.
               </span> */}
 
-              <h3 className="insider-subheading font-inter text-base sm:text-md md:text-xl lg:text-2xl leading-relaxed text-gray-300 max-w-2xl">
+              <h3 className="insider-subheading font-inter text-base sm:text-md md:text-xl lg:text-2xl leading-relaxed text-gray-900 max-w-2xl font-medium">
                 Turn your memories and imaginations into sculptures. <br />{" "}
                 Custom figurines that capture your story, your style, your
                 universe.
               </h3>
+
+              <div className="insider-cta mt-4">
+                <a href="/shop" className="button bg-black text-white hover:bg-gray-900 shadow-xl border border-black/10">
+                  <span className="button-bg">
+                    <span className="button-text">Get Started</span>
+                  </span>
+                </a>
+              </div>
             </div>
           </div>
         </div>
