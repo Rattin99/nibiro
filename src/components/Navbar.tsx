@@ -73,10 +73,10 @@ const Navbar = () => {
 
           {/* Desktop Center Menu - Pill Container */}
           <div className="hidden lg:flex absolute left-1/2 -translate-x-1/2 bg-white rounded-2xl h-14 px-2 py-2 gap-2 shadow-sm">
-            <NavButton href="#shop">Shop</NavButton>
-            <NavButton href="#custom">Custom</NavButton>
-            <NavButton href="#blogs">Blogs</NavButton>
-            <NavButton href="#contact">Contact</NavButton>
+            <NavButton href="/shop">Shop</NavButton>
+            <NavButton href="/custom">Custom</NavButton>
+            <NavButton href="/blogs">Blogs</NavButton>
+            <NavButton href="/contact">Contact</NavButton>
           </div>
 
           {/* Right Side - CTA Button (Desktop) and Hamburger (Mobile) */}
@@ -129,28 +129,28 @@ const Navbar = () => {
           {/* Menu Links */}
           <div className="flex flex-col items-center gap-6 sm:gap-8 mb-12">
             <a
-              href="#shop"
+              href="/shop"
               onClick={closeMenu}
               className="text-4xl sm:text-5xl md:text-6xl font-bold text-white hover:scale-110 transition-transform duration-300"
             >
               Shop
             </a>
             <a
-              href="#custom"
+              href="/custom"
               onClick={closeMenu}
               className="text-4xl sm:text-5xl md:text-6xl font-bold text-white hover:scale-110 transition-transform duration-300"
             >
               Custom
             </a>
             <a
-              href="#blogs"
+              href="/blogs"
               onClick={closeMenu}
               className="text-4xl sm:text-5xl md:text-6xl font-bold text-white hover:scale-110 transition-transform duration-300"
             >
               Blogs
             </a>
             <a
-              href="#contact"
+              href="/contact"
               onClick={closeMenu}
               className="text-4xl sm:text-5xl md:text-6xl font-bold text-white hover:scale-110 transition-transform duration-300"
             >
