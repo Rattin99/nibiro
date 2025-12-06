@@ -339,12 +339,6 @@ const HeroSection = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-
-
-
-
-
-
   const handleImageClick = (route) => {
     // In your Next.js app, replace this with: router.push(route)
     console.log("Navigate to:", route);
@@ -358,7 +352,7 @@ const HeroSection = () => {
       `}</style>
       <div
         ref={containerRef}
-        className="relative w-full h-screen overflow-hidden bg-neutral-950"
+        className="relative w-full h-screen overflow-hidden bg-[#E6322E]"
       >
         {/* Floating Product Images */}
         {images.map((img, index) => {

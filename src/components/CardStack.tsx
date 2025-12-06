@@ -96,7 +96,7 @@ const CardStack: React.FC<CardStackProps> = ({ children }) => {
   }, [children]);
 
   return (
-    <div ref={containerRef} className="bg-neutral-950 card-stack-container">
+    <div ref={containerRef} className="bg-[#E6322E] card-stack-container">
       {React.Children.map(children, (child, index) => (
         <div key={index} className="card-item" style={{ zIndex: index + 1 }}>
           {child}
