@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
+import gsap from "gsap";
 
 // Quadtree implementation for efficient spatial queries
 class QuadTree {
@@ -101,9 +102,53 @@ class QuadTree {
 const HeroSection = () => {
   const router = useRouter();
   const [images, setImages] = useState([]);
-  const [hoveredIndex, setHoveredIndex] = useState(null);
+
   const [scrollY, setScrollY] = useState(0);
   const containerRef = useRef(null);
+  const imageRefs = useRef({});
+
+  // Global mouse handler to track movement even over other elements
+  useEffect(() => {
+    const handleGlobalMouseMove = (e) => {
+      Object.entries(imageRefs.current).forEach(([id, el]) => {
+        if (!el) return;
+
+        const rect = el.getBoundingClientRect();
+        const centerX = rect.left + rect.width / 2;
+        const centerY = rect.top + rect.height / 2;
+
+        // Check if mouse is roughly over the image (using a slightly larger hit area for better UX)
+        const hitRadius = rect.width / 2; 
+        const dx = e.clientX - centerX;
+        const dy = e.clientY - centerY;
+        const distance = Math.sqrt(dx * dx + dy * dy);
+
+        if (distance < hitRadius) {
+          // Hover state - move slightly
+          gsap.to(el, {
+            x: dx * 0.3,
+            y: dy * 0.3,
+            duration: 0.5,
+            ease: "power2.out",
+            overwrite: "auto",
+          });
+        } else {
+          // Return to origin (only if currently displaced and not being hovered)
+          // We use overwrite: "auto" to let GSAP handle conflicts
+           gsap.to(el, {
+            x: 0,
+            y: 0,
+            duration: 1.2,
+            ease: "elastic.out(1, 0.3)",
+             overwrite: "auto",
+          });
+        }
+      });
+    };
+
+    window.addEventListener("mousemove", handleGlobalMouseMove);
+    return () => window.removeEventListener("mousemove", handleGlobalMouseMove);
+  }, [images]); // Re-bind if images list changes
 
   // Mock API response - replace with actual API call
   const mockProducts = [
@@ -339,39 +384,11 @@ const HeroSection = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const getProximityScale = (index, mouseX, mouseY) => {
-    if (hoveredIndex === null) return 1;
 
-    const img = images[index];
-    const imgCenterX = img.x;
-    const imgCenterY = img.y;
 
-    const dx = imgCenterX - mouseX;
-    const dy = imgCenterY - mouseY;
-    const distance = Math.sqrt(dx * dx + dy * dy);
 
-    const maxDistance = 30;
-    if (distance < maxDistance) {
-      const scale = 1 + (1 - distance / maxDistance) * 0.8;
-      return scale;
-    }
 
-    return 1;
-  };
 
-  const handleMouseMove = (e, index) => {
-    if (containerRef.current) {
-      const rect = containerRef.current.getBoundingClientRect();
-      const mouseX = ((e.clientX - rect.left) / rect.width) * 100;
-      const mouseY = ((e.clientY - rect.top) / rect.height) * 100;
-
-      setHoveredIndex({ index, mouseX, mouseY });
-    }
-  };
-
-  const handleMouseLeave = () => {
-    setHoveredIndex(null);
-  };
 
   const handleImageClick = (route) => {
     // In your Next.js app, replace this with: router.push(route)
@@ -387,20 +404,10 @@ const HeroSection = () => {
       <div
         ref={containerRef}
         className="relative w-full h-screen overflow-hidden bg-neutral-950"
-        onMouseMove={(e) => handleMouseMove(e, null)}
-        onMouseLeave={handleMouseLeave}
       >
         {/* Floating Product Images */}
         {images.map((img, index) => {
           const parallaxOffset = scrollY * img.depth * 0.5;
-          let scale = hoveredIndex
-            ? getProximityScale(index, hoveredIndex.mouseX, hoveredIndex.mouseY)
-            : 1;
-
-          // Add extra scale boost when directly hovering over this image
-          if (hoveredIndex && hoveredIndex.index === index) {
-            scale = scale * 1.5;
-          }
 
           return (
             <div
@@ -409,19 +416,17 @@ const HeroSection = () => {
               style={{
                 left: `${img.x}%`,
                 top: `${img.y}%`,
-                transform: `translate(-50%, -50%) translateY(${parallaxOffset}px) scale(${scale})`,
+                transform: `translate(-50%, -50%) translateY(${parallaxOffset}px)`,
                 zIndex: Math.floor(img.z),
               }}
               onClick={() => handleImageClick(img.route)}
-              onMouseEnter={(e) => handleMouseMove(e, index)}
             >
               <div
+                ref={(el) => (imageRefs.current[img.id] = el)}
                 className="transition-shadow duration-300"
                 style={{
                   width: `${img.size}px`,
                   height: `${img.size}px`,
-
-
                 }}
               >
                 <img
@@ -442,15 +447,20 @@ const HeroSection = () => {
           className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none"
           style={{ zIndex: 1000 }}
         >
-          <h1 className="text-6xl md:text-8xl font-bold text-white mb-6 text-center tracking-tight">
-            Nibiro
+          <h1 className="flex font-black tracking-tighter text-white select-none font-montserrat">
+            {"nibiro".split("").map((letter, i) => (
+              <span
+                key={i}
+                className="pointer-events-auto cursor-default transition-colors duration-500 hover:text-transparent"
+                style={{
+                  fontSize: "18vw",
+                  WebkitTextStroke: "2px white",
+                }}
+              >
+                {letter}
+              </span>
+            ))}
           </h1>
-          <p className="text-xl md:text-2xl text-gray-300 text-center max-w-2xl px-4">
-            Transform your memories into stunning 3D printed masterpieces
-          </p>
-          <button className="mt-8 px-8 py-4 bg-white text-purple-900 rounded-full font-semibold text-lg hover:bg-purple-100 transition-colors pointer-events-auto">
-            Start Creating
-          </button>
         </div>
 
         {/* Gradient Overlay */}

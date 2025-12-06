@@ -59,28 +59,48 @@ const Navbar = () => {
   return (
     <>
       <nav
-        className={`fixed top-0 left-0 right-0 z-[999] px-6 sm:px-10 lg:px-10 py-4 transition-transform duration-300 ease-in-out ${
+        className={`fixed top-0 left-0 right-0 z-[999] px-6 sm:px-10 lg:px-10 py-4 transition-transform duration-300 ease-in-out pointer-events-none ${
           isVisible ? "translate-y-0" : "-translate-y-full"
         }`}
       >
-        <div className="max-w-[120rem] mx-auto h-20 sm:h-24 lg:h-[7.5rem] flex items-center justify-between">
+        <div className="max-w-[120rem] mx-auto h-20 sm:h-24 lg:h-[7.5rem] flex items-center justify-between font-montserrat">
           {/* Logo */}
-          <a href="/" className="relative z-[1000] h-14 sm:h-16 lg:h-[4.75rem]">
+          <a href="/" className="relative z-[1000] h-14 sm:h-16 lg:h-[4.75rem] pointer-events-auto">
             <div className="h-full aspect-square bg-gradient-to-br from-red-500 to-blue-500 rounded-full flex items-center justify-center text-white font-bold text-xl sm:text-2xl">
               N
             </div>
           </a>
 
           {/* Desktop Center Menu - Pill Container */}
-          <div className="hidden lg:flex absolute left-1/2 -translate-x-1/2 bg-white rounded-2xl h-14 px-2 py-2 gap-2 shadow-sm">
-            <NavButton href="#shop">Shop</NavButton>
-            <NavButton href="#custom">Custom</NavButton>
-            <NavButton href="#blogs">Blogs</NavButton>
-            <NavButton href="#contact">Contact</NavButton>
+          <div className="hidden lg:flex absolute left-1/2 -translate-x-1/2 bg-white rounded-2xl h-14 px-2 py-2 gap-2 shadow-sm pointer-events-auto">
+            <a
+              href="#shop"
+              className="px-6 py-2 rounded-xl text-black hover:bg-gray-100 transition-colors duration-200 font-medium flex items-center"
+            >
+              Shop
+            </a>
+            <a
+              href="#custom"
+              className="px-6 py-2 rounded-xl text-black hover:bg-gray-100 transition-colors duration-200 font-medium flex items-center"
+            >
+              Custom
+            </a>
+            <a
+              href="#blogs"
+              className="px-6 py-2 rounded-xl text-black hover:bg-gray-100 transition-colors duration-200 font-medium flex items-center"
+            >
+              Blogs
+            </a>
+            <a
+              href="#contact"
+              className="px-6 py-2 rounded-xl text-black hover:bg-gray-100 transition-colors duration-200 font-medium flex items-center"
+            >
+              Contact
+            </a>
           </div>
 
           {/* Right Side - CTA Button (Desktop) and Hamburger (Mobile) */}
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-4 pointer-events-auto">
             {/* CTA Button - Desktop Only */}
             <div className="hidden lg:block">
               <a
