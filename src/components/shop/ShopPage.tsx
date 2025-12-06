@@ -1,25 +1,26 @@
 "use client";
-import React, { useState, useMemo } from "react";
-import { products } from "./dummyData";
-import ProductCard from "./ProductCard";
-import FilterSidebar from "./FilterSidebar";
+import React, { useState, useMemo } from 'react';
+import { products } from './dummyData';
+import ProductCard from './ProductCard';
+import FilterSidebar from './FilterSidebar';
+import BengaliBackground from '../BengaliBackground';
 
 const ShopPage = () => {
-  const [selectedCategory, setSelectedCategory] = useState("All");
-  const [priceSort, setPriceSort] = useState<"asc" | "desc" | null>(null);
+  const [selectedCategory, setSelectedCategory] = useState('All');
+  const [priceSort, setPriceSort] = useState<'asc' | 'desc' | null>(null);
 
   const filteredProducts = useMemo(() => {
     let result = [...products];
 
     // Filter by category
-    if (selectedCategory !== "All") {
+    if (selectedCategory !== 'All') {
       result = result.filter((p) => p.category === selectedCategory);
     }
 
     // Sort by price
-    if (priceSort === "asc") {
+    if (priceSort === 'asc') {
       result.sort((a, b) => a.price - b.price);
-    } else if (priceSort === "desc") {
+    } else if (priceSort === 'desc') {
       result.sort((a, b) => b.price - a.price);
     }
 
@@ -27,8 +28,10 @@ const ShopPage = () => {
   }, [selectedCategory, priceSort]);
 
   return (
-    <div className="min-h-screen bg-neutral-50 pt-32 pb-20 px-4 sm:px-6 lg:px-8 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px]">
-      <div className="max-w-[100rem] mx-auto">
+    <div className="min-h-screen pt-32 pb-20 px-4 sm:px-6 lg:px-8 relative bg-neutral-50 isolate">
+      <div className="fixed inset-0 bg-neutral-50 -z-20"></div> {/* Solid background layer */}
+      <BengaliBackground /> {/* z-0 layer */}
+      <div className="max-w-[100rem] mx-auto relative z-10"> {/* Content layer */}
         {/* <header className="mb-12 text-center"> */}
         {/*   <h1 className="text-5xl md:text-7xl font-black mb-4 font-montserrat tracking-tight"> */}
         {/*     THE <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-blue-600">SHOP</span> */}
