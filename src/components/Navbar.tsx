@@ -76,7 +76,7 @@ const Navbar = () => {
             <NavButton href="/shop">Shop</NavButton>
             <NavButton href="/custom">Custom</NavButton>
             <NavButton href="/blogs">Blogs</NavButton>
-            <NavButton href="#contact">Contact</NavButton>
+            <NavButton href="/contact">Contact</NavButton>
           </div>
 
           {/* Right Side - CTA Button (Desktop) and Hamburger (Mobile) */}
@@ -150,7 +150,7 @@ const Navbar = () => {
               Blogs
             </a>
             <a
-              href="#contact"
+              href="/contact"
               onClick={closeMenu}
               className="text-4xl sm:text-5xl md:text-6xl font-bold text-white hover:scale-110 transition-transform duration-300"
             >
